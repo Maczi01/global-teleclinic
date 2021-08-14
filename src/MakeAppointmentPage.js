@@ -1,5 +1,6 @@
 import './App.css';
 import {useEffect, useState} from 'react';
+import Button from '@material-ui/core/Button';
 
 const MakeAppointmentView = () => {
 
@@ -136,7 +137,7 @@ const MakeAppointmentView = () => {
                         </label>
                     </div>
                     <div>
-                        <button> Umów konsultację</button>
+                        <Button variant="contained" color="secondary"> Umów konsultację</Button>
                     </div>
 
 
