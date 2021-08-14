@@ -12,6 +12,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import VoiceChatIcon from '@material-ui/icons/VoiceChat';
 import PhoneIcon from '@material-ui/icons/Phone';
 import VisitCard from "./VisitCard";
+import Navbar from "./Navbar";
 
 
 const MakeAppointmentView = () => {
@@ -91,6 +92,7 @@ const MakeAppointmentView = () => {
 
     return (
         <Grid container>
+          <Navbar/>
             <Grid container>
                 <RadioGroup>
                     {array
