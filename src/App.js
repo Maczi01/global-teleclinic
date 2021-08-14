@@ -41,14 +41,18 @@ function App() {
 
     const submitVisit = (e) => {
         e.preventDefault()
-        console.log({doctor: selectedDoctor.name, payment, contact})
+        setTimeout(() => {
+
+            console.log({doctor: selectedDoctor.name, payment, contact})
+        }, 5000)
+        // console.log({doctor: selectedDoctor.name, payment, contact})
     };
 
     const cutDescription = (description) => (
         description.length > 50 ? `${description.substring(0, 30)}...` : description
-    )
-    const showDate = (date) => {
+    );
 
+    const showDate = (date) => {
         const objDate = new Date(date);
         const locale = "pl";
         const day = objDate.getDate();
@@ -64,18 +68,18 @@ function App() {
         return month;
     };
 
-   const text = (d) => {
-       switch (d) {
-           case 0:
-               return "dzisiaj";
-           case 1:
-               return "jutro";
-           case 2:
-               return "pojutrze";
-           default:
-               return "nic";
-       }
-   }
+    const text = (d) => {
+        switch (d) {
+            case 0:
+                return "dzisiaj";
+            case 1:
+                return "jutro";
+            case 2:
+                return "pojutrze";
+            default:
+                return "";
+        }
+    }
 
     return (
         <div className="App">
@@ -94,7 +98,13 @@ function App() {
                 {
                     selectedDoctor ?
                         <div>
-                            Selected doctor: {selectedDoctor.name}
+                            <div>
+                                Selected doctor: {selectedDoctor.name}
+                            </div>
+                            <div>
+                                {selectedDoctor.position}
+                            </div>
+
                             <div>
                                 opis: {cutDescription(selectedDoctor.description)}
                             </div>
