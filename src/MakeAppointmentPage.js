@@ -1,5 +1,5 @@
 import "./App.css";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Radio from "@material-ui/core/Radio";
@@ -11,6 +11,7 @@ import Grid from "@material-ui/core/Grid";
 import ChatIcon from '@material-ui/icons/Chat';
 import VoiceChatIcon from '@material-ui/icons/VoiceChat';
 import PhoneIcon from '@material-ui/icons/Phone';
+import VisitCard from "./VisitCard";
 
 
 const MakeAppointmentView = () => {
@@ -95,13 +96,14 @@ const MakeAppointmentView = () => {
                     {array
                         ? array.map((d) => (
                             <Grid item key={d.id}>
-                                <FormControlLabel
-                                    value="paymentOnce"
-                                    control={
-                                        <Button onClick={() => handleDoctor(d)}>{d.name}</Button>
-                                    }
-                                    onChange={onChangeValuePayment}
-                                />
+                              <VisitCard visit={d}/>
+                                {/*<FormControlLabel*/}
+                                {/*    value="paymentOnce"*/}
+                                {/*    control={*/}
+                                {/*        <Button onClick={() => handleDoctor(d)}>{d.name}</Button>*/}
+                                {/*    }*/}
+                                {/*    onChange={onChangeValuePayment}*/}
+                                {/*/>*/}
                             </Grid>
                         ))
                         : null}
