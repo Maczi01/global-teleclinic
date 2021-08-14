@@ -50,22 +50,32 @@ function App() {
     const showDate = (date) => {
 
         const objDate = new Date(date);
-        const today = new Date().getDay();
         const locale = "pl";
-        const day = objDate.getDay();
+        const day = objDate.getDate();
+        const today = (new Date()).getDate();
         const month = objDate.toLocaleString(locale, {month: "long"});
         const year = objDate.getFullYear();
         const hour = objDate.getHours();
         const minute = objDate.getMinutes();
-        const dayDifference = (day)
-        // console.log(objDate.getDay())
-        // const text =
-        console.log(`${day} ${month} ${year}, godz. ${hour}:${minute} `);
+        console.log(day - today)
+        const daysDifference = day - today
+        const diff = text(daysDifference)
+        console.log(`${diff} ${day} ${month} ${year}, godz. ${hour}:${minute} `);
         return month;
-
-
     };
 
+   const text = (d) => {
+       switch (d) {
+           case 0:
+               return "dzisiaj";
+           case 1:
+               return "jutro";
+           case 2:
+               return "pojutrze";
+           default:
+               return "nic";
+       }
+   }
 
     return (
         <div className="App">
