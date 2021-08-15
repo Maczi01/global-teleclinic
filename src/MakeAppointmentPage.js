@@ -15,6 +15,10 @@ import VisitCard from "./VisitCard";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Box from "@material-ui/core/Box";
+import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Paper from "@material-ui/core/Paper";
+import DoctorCard from "./DoctorCard";
 
 const MakeAppointmentView = () => {
   const [selectedDoctor, setSelectedDoctor] = useState();
@@ -35,7 +39,7 @@ const MakeAppointmentView = () => {
   }, []);
 
   const handleDoctor = (d) => {
-    // setSelectedDoctor(d);
+    setSelectedDoctor(d);
     console.log(selectedDoctor);
   };
 
@@ -58,10 +62,7 @@ const MakeAppointmentView = () => {
     }, 5000);
   };
 
-  const cutDescription = (description) =>
-    description.length > 50
-      ? `${description.substring(0, 30)}...`
-      : description;
+
 
   const showDate = (date) => {
     const objDate = new Date(date);
@@ -94,119 +95,118 @@ const MakeAppointmentView = () => {
   return (
     <>
       <Navbar />
-      <Grid container component="main" >
-        <Grid container item xs={false} sm={4} md={6}>
-          <Box>
-            <RadioGroup>
-              {array
-                ? array.map((d) => (
-                    <Grid item key={d.id}>
-                      <VisitCard visit={d} handleDoctor={handleDoctor} />
-                      {/*<FormControlLabel*/}
-                      {/*    value="paymentOnce"*/}
-                      {/*    control={*/}
-                      {/*        <Button onClick={() => handleDoctor(d)}>{d.name}</Button>*/}
-                      {/*    }*/}
-                      {/*    onChange={onChangeValuePayment}*/}
-                      {/*/>*/}
-                    </Grid>
-                  ))
-                : null}
-            </RadioGroup>
-          </Box>
+      <Grid container component="main">
+        <Grid container item md={6}>
+          {array ? (
+            array.map((d) => (
+              <VisitCard visit={d} handleDoctor={() => handleDoctor(d)} />
+            ))
+          ) : (
+            <CircularProgress color="secondary" />
+          )}
+
+          {/*<RadioGroup>*/}
+          {/*  {array*/}
+          {/*    ? array.map((d) => (*/}
+          {/*        <Grid sm={4}  md={12} item key={d.id}>*/}
+          {/*          <VisitCard visit={d} handleDoctor={handleDoctor} />*/}
+          {/*<FormControlLabel*/}
+          {/*    value="paymentOnce"*/}
+          {/*    control={*/}
+          {/*        <Button onClick={() => handleDoctor(d)}>{d.name}</Button>*/}
+          {/*    }*/}
+          {/*    onChange={onChangeValuePayment}*/}
+          {/*/>*/}
+          {/*    </Grid>*/}
+          {/*  ))*/}
+          {/*: null}*/}
+          {/*</RadioGroup>*/}
+          {/*</Box>*/}
         </Grid>
         <Grid item xs={12} sm={8} md={6}>
-          <Box bgcolor="palevioletred">
-            <form action="" onSubmit={submitVisit} className="list">
-              {selectedDoctor ? (
-                <div>
-                  <Typography variant="h6">{selectedDoctor.name}</Typography>
-                  <Typography variant="body1">
-                    {selectedDoctor.position}
-                  </Typography>
+          <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            {/*<form action="" onSubmit={submitVisit} className="list">*/}
+            {array && <DoctorCard />}
 
-                  <Typography variant="body2">
-                    {cutDescription(selectedDoctor.description)}
-                  </Typography>
-                  <div>Termin konsultacji: {showDate(selectedDoctor.date)}</div>
-                </div>
-              ) : null}
+            <RadioGroup value="video" onChange={onChangeValueContact}>
+              <FormControlLabel
+                value="chat"
+                control={
+                  <Button
+                    type="submit"
+                    variant="outlined"
+                    color="secondary"
+                    disableElevation
+                    startIcon={<ChatIcon />}
+                  >
+                    Przez czat
+                  </Button>
+                }
+                onChange={onChangeValueContact}
+              />
+              <FormControlLabel
+                value="video"
+                control={
+                  <Button
+                    type="submit"
+                    variant="outlined"
+                    color="secondary"
+                    disableElevation
+                    disabled
+                    startIcon={<VoiceChatIcon />}
+                  >
+                    Przez wideo-czat
+                  </Button>
+                }
+              />
+              <FormControlLabel
+                value="phone"
+                control={
+                  <Button
+                    type="submit"
+                    variant="outlined"
+                    color="secondary"
+                    disableElevation
+                    startIcon={<PhoneIcon />}
+                  >
+                    Przez wideo-czat
+                  </Button>
+                }
+              />
+            </RadioGroup>
 
-              <RadioGroup value="video" onChange={onChangeValueContact}>
-                <FormControlLabel
-                  value="chat"
-                  control={
-                    <Button
-                      type="submit"
-                      variant="outlined"
-                      color="secondary"
-                      disableElevation
-                      startIcon={<ChatIcon />}
-                    >
-                      Przez czat
-                    </Button>
-                  }
-                  onChange={onChangeValueContact}
-                />
-                <FormControlLabel
-                  value="video"
-                  control={
-                    <Button
-                      type="submit"
-                      variant="outlined"
-                      color="secondary"
-                      disableElevation
-                      disabled
-                      startIcon={<VoiceChatIcon />}
-                    >
-                      Przez wideo-czat
-                    </Button>
-                  }
-                />
-                <FormControlLabel
-                  value="phone"
-                  control={
-                    <Button
-                      type="submit"
-                      variant="outlined"
-                      color="secondary"
-                      disableElevation
-                      startIcon={<PhoneIcon />}
-                    >
-                      Przez wideo-czat
-                    </Button>
-                  }
-                />
-              </RadioGroup>
+            <RadioGroup>
+              <FormControlLabel
+                value="subscription"
+                control={<Radio color="secondary" />}
+                onChange={onChangeValuePayment}
+                label="W abonamencie"
+              />{" "}
+              <FormControlLabel
+                value="paymentOnce"
+                control={<Radio color="secondary" />}
+                onChange={onChangeValuePayment}
+                label="Płatność jednorazowa"
+              />
+            </RadioGroup>
 
-              <RadioGroup>
-                <FormControlLabel
-                  value="subscription"
-                  control={<Radio color="secondary" />}
-                  onChange={onChangeValuePayment}
-                  label="W abonamencie"
-                />{" "}
-                <FormControlLabel
-                  value="paymentOnce"
-                  control={<Radio color="secondary" />}
-                  onChange={onChangeValuePayment}
-                  label="Płatność jednorazowa"
-                />
-              </RadioGroup>
-
-              <div>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="secondary"
-                  disableElevation
-                >
-                  {" "}
-                  Umów konsultację
-                </Button>
-              </div>
-            </form>
-          </Box>
+            <div>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                disableElevation
+              >
+                Umów konsultację
+              </Button>
+            </div>
+            {/*</form>*/}
+          </Grid>
         </Grid>
       </Grid>
       <Footer />

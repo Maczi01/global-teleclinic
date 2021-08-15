@@ -7,29 +7,30 @@ import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles(() => ({
     root: {
         display: "flex",
         flexDirection: "row",
-        // justifyContent: "center",
         alignItems: "center",
+        justifyContent: "space-between",
         width: "100%",
-        padding: "8px"
+        padding: "8px",
     },
     box: {
         width: "200px",
         height: "100px",
-        backgroundColor: "#fffe27",
+        backgroundColor: "rgb(220, 0, 78)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
     },
     avatar: {
-        // // width: "100%
-    }
-    ,
+        width: "50px",
+        height: "50px",
+    },
     details: {
         display: "flex",
         flexDirection: "column",
@@ -44,19 +45,24 @@ const VisitCard = ({visit, handleDoctor}) => {
     const d = new Date(date);
     const classes = useStyles();
     return (
-        <Card onClick={handleDoctor} className={classes.root}>
+        <Card onClick={handleDoctor} className={classes.root} bgcolor="text.primary">
             <CardContent>
-                <Box className={classes.box}>
+                {/*TODO nazwa classes box czy classes paper?*/}
+                <Paper className={classes.box} disabledElavation>
                     <Typography variant="h6">
                         {d.getDate()}.{d.getMonth()}
                     </Typography>
                     <Typography variant="h5">
                         {d.getHours()}:{d.getMinutes()}
                     </Typography>
-                </Box>
+                </Paper>
             </CardContent>
             <Avatar className={classes.avatar}>H</Avatar>
-            <CardHeader title={name} subheader={position}/>
+            <CardHeader
+                className={classes.content}
+                title={name}
+                subheader={position}
+            />
             <ArrowForwardIosIcon/>
         </Card>
     );
