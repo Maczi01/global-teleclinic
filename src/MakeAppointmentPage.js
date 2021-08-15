@@ -19,6 +19,7 @@ import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Paper from "@material-ui/core/Paper";
 import DoctorCard from "./DoctorCard";
+import AppointmentDetails from "./AppointmentDetails";
 
 const MakeAppointmentView = () => {
   const [selectedDoctor, setSelectedDoctor] = useState();
@@ -61,8 +62,6 @@ const MakeAppointmentView = () => {
       console.log({ doctor: selectedDoctor.name, payment, contact });
     }, 5000);
   };
-
-
 
   const showDate = (date) => {
     const objDate = new Date(date);
@@ -133,78 +132,8 @@ const MakeAppointmentView = () => {
             {/*<form action="" onSubmit={submitVisit} className="list">*/}
             {array && <DoctorCard />}
 
-            <RadioGroup value="video" onChange={onChangeValueContact}>
-              <FormControlLabel
-                value="chat"
-                control={
-                  <Button
-                    type="submit"
-                    variant="outlined"
-                    color="secondary"
-                    disableElevation
-                    startIcon={<ChatIcon />}
-                  >
-                    Przez czat
-                  </Button>
-                }
-                onChange={onChangeValueContact}
-              />
-              <FormControlLabel
-                value="video"
-                control={
-                  <Button
-                    type="submit"
-                    variant="outlined"
-                    color="secondary"
-                    disableElevation
-                    disabled
-                    startIcon={<VoiceChatIcon />}
-                  >
-                    Przez wideo-czat
-                  </Button>
-                }
-              />
-              <FormControlLabel
-                value="phone"
-                control={
-                  <Button
-                    type="submit"
-                    variant="outlined"
-                    color="secondary"
-                    disableElevation
-                    startIcon={<PhoneIcon />}
-                  >
-                    Przez wideo-czat
-                  </Button>
-                }
-              />
-            </RadioGroup>
+            <AppointmentDetails />
 
-            <RadioGroup>
-              <FormControlLabel
-                value="subscription"
-                control={<Radio color="secondary" />}
-                onChange={onChangeValuePayment}
-                label="W abonamencie"
-              />{" "}
-              <FormControlLabel
-                value="paymentOnce"
-                control={<Radio color="secondary" />}
-                onChange={onChangeValuePayment}
-                label="Płatność jednorazowa"
-              />
-            </RadioGroup>
-
-            <div>
-              <Button
-                type="submit"
-                variant="contained"
-                color="secondary"
-                disableElevation
-              >
-                Umów konsultację
-              </Button>
-            </div>
             {/*</form>*/}
           </Grid>
         </Grid>
