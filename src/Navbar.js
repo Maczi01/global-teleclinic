@@ -27,6 +27,7 @@ const Navbar = () => {
     const classes = useStyles();
 
     return (
+        // TODO spróbować przepisać 
         <div className={classes.root}>
             <AppBar className={classes.bar} position="static">
                 <Toolbar>
