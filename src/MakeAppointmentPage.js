@@ -20,6 +20,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Paper from "@material-ui/core/Paper";
 import DoctorCard from "./DoctorCard";
 import AppointmentDetails from "./AppointmentDetails";
+import Information from "./Information";
+import Appointment from "./Appointment";
 
 const MakeAppointmentView = () => {
   const [selectedDoctor, setSelectedDoctor] = useState();
@@ -63,33 +65,7 @@ const MakeAppointmentView = () => {
     }, 5000);
   };
 
-  const showDate = (date) => {
-    const objDate = new Date(date);
-    const locale = "pl";
-    const day = objDate.getDate();
-    const today = new Date().getDate();
-    const month = objDate.toLocaleString(locale, { month: "long" });
-    const year = objDate.getFullYear();
-    const hour = objDate.getHours();
-    const minute = objDate.getMinutes();
-    console.log(day - today);
-    const daysDifference = day - today;
-    const diff = text(daysDifference);
-    return `${diff} ${day} ${month} ${year}, godz. ${hour}:${minute} `;
-  };
 
-  const text = (d) => {
-    switch (d) {
-      case 0:
-        return "dzisiaj";
-      case 1:
-        return "jutro";
-      case 2:
-        return "pojutrze";
-      default:
-        return "";
-    }
-  };
 
   return (
     <>
@@ -128,12 +104,14 @@ const MakeAppointmentView = () => {
             direction="column"
             justifyContent="center"
             alignItems="center"
+            minWidth="100%"
           >
             {/*<form action="" onSubmit={submitVisit} className="list">*/}
-            {array && <DoctorCard />}
-
-            <AppointmentDetails />
-
+            {selectedDoctor ? (
+              <Appointment doctor={selectedDoctor} />
+            ) : (
+              <Information />
+            )}
             {/*</form>*/}
           </Grid>
         </Grid>

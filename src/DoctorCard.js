@@ -13,20 +13,24 @@ const useStyles = makeStyles(() => ({
     // flexDirection: "row",
     justifyContent: "space-between",
     height: "200px",
-    padding: "20px",
+    // padding: "20px",
+    margin: "0 auto",
+    width: "100%",
   },
   box: {
-    width: "200px",
-    height: "100px",
-    backgroundColor: "rgb(220, 0, 78)",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    // width: "200px",
+    // height: "100px",
+    // backgroundColor: "rgb(220, 0, 78)",
+    // display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "center",
+    // alignItems: "center",
+    margin: "10px",
   },
   avatar: {
     width: "150px",
     height: "150px",
+    margin: "10px",
   },
   details: {
     display: "flex",
@@ -37,25 +41,24 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DoctorCard = () => {
+const DoctorCard = ({ doctor }) => {
+  const { description, name, position } = doctor;
   const cutDescription = (description) =>
     description.length > 50
-      ? `${description.substring(0, 30)}...`
+      ? `${description.substring(0, 130)}...`
       : description;
 
   const classes = useStyles();
-
+  console.log(description);
   return (
-    <Card p={8} className={classes.root}>
-      <Box>
+    <Card p={8} className={classes.root} md={6}>
+      <Box className={classes.box}>
         {/*  TODO zmienić fontweight na bold*/}
-        <Typography variant="h4">lek. Gregory House</Typography>
-        <Typography variant="body1">Internista</Typography>
+        <Typography variant="h4">{name}</Typography>
+        <Typography variant="body1">{position}</Typography>
         <Typography variant="body2">
-          "Lekarz z wieloletnim doświadczeniem w pracy za granicą. Absolwent
-          Królewskiej Szkoły Chirurgów w Irlandii (RCSI), Członek Niemieckigo
-          Towarzystwa Urolgicznego (DGU), Członek Europejskiego Towarzystwa
-          Urologicznego (EAU)."
+          {/*{cutDescription(description)}*/}
+          {description}
         </Typography>
       </Box>
       <Avatar className={classes.avatar}>H</Avatar>

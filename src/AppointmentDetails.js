@@ -13,6 +13,7 @@ import Radio from "@material-ui/core/Radio/Radio";
 import ChatIcon from "@material-ui/icons/Chat";
 import VoiceChatIcon from "@material-ui/icons/VoiceChat";
 import PhoneIcon from "@material-ui/icons/Phone";
+import { formatDate } from "./utils";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -49,14 +50,16 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const AppointmentDetails = ({ onChangeValueContact, onChangeValuePayment }) => {
+const AppointmentDetails = ({
+  doctor,
+  onChangeValueContact,
+  onChangeValuePayment,
+}) => {
   const classes = useStyles();
-
+  const { date } = doctor;
   return (
     <Card p={8} className={classes.root}>
-      <Typography variant="h3">
-        Termina konsultacji: dzisiaj 11 lipca 2021, godzina 15:00
-      </Typography>
+      <Typography variant="h4">Termin konsultacji: {formatDate(date)}</Typography>
       <Box>
         <RadioGroup
           value="video"
