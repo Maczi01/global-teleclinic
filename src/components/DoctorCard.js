@@ -14,7 +14,8 @@ const useStyles = makeStyles(() => ({
     justifyContent: "space-between",
     height: "200px",
     // padding: "20px",
-    margin: "0 auto",
+    // margin: "0 auto",
+    // margin: "2px 20px",
     width: "100%",
   },
   box: {

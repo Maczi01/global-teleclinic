@@ -21,7 +21,6 @@ const MakeAppointmentView = () => {
     <PageTemplate>
       <Grid container component="main">
         <ListVisits handleVisit={handleVisit} />
-
         {consultation ? (
           <RightSide consultation={consultation} />
         ) : (

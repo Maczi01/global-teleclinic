@@ -29,7 +29,7 @@ const ListVisits = ({ handleVisit }) => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
-    <Grid container item md={6}>
+    <Grid container item md={6} >
       {isLoading ? (
         <Box
           display="flex"

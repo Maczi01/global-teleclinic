@@ -20,13 +20,15 @@ import { useHistory } from "react-router";
 
 const useStyles = makeStyles(() => ({
   root: {
-    display: "flex",
-    // flexDirection: "row",
-    justifyContent: "space-between",
-    height: "200px",
-    // padding: "20px",
-    margin: "0 auto",
-    width: "100%",
+    padding: "4px 20px",
+    margin: "2px 20px",
+    backgroundColor: "rgb(74,198,220)",
+  },
+
+  content: {
+    direction: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   visit: {
     display: "flex",
@@ -54,9 +56,9 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
   },
-  content: {
-    flex: "1 0 auto",
-  },
+  // content: {
+  //   flex: "1 0 auto",
+  // },
   disabledButton: {
     color: "rgba(0, 0, 0, 0.26)",
     border: "1px solid rgba(0, 0, 0, 0.26)",
@@ -91,17 +93,13 @@ const RightSide = ({ consultation }) => {
   };
 
   const onChangeValueContact = (contactType) => {
+    //TODO może dataset i generyczny handler?
     setContact(contactType);
   };
 
   return (
-    <Grid item xs={12} sm={8} md={6}>
-      <Grid
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-      >
+    <Grid container item xs={12} sm={8} md={6}  >
+      <Grid className={classes.content} container>
         <>
           <DoctorCard
             name={name}
@@ -129,7 +127,9 @@ const RightSide = ({ consultation }) => {
                   variant="outlined"
                   color="secondary"
                   disableElevation
-                  className={contact === "videochat" ? "" : classes.disabledButton}
+                  className={
+                    contact === "videochat" ? "" : classes.disabledButton
+                  }
                   onClick={() => onChangeValueContact("videochat")}
                   startIcon={<VoiceChatIcon />}
                 >
