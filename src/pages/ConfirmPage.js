@@ -1,10 +1,10 @@
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import React from "react";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 import Box from "@material-ui/core/Box";
-import logo from "./assets/logo.svg";
+import logo from "../assets/logo.svg";
 import IconButton from "@material-ui/core/IconButton";
-import confirmImage from "./assets/confirmImage.svg";
+import confirmImage from "../assets/confirmImage.svg";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ConfirmView = () => {
+const ConfirmPage = () => {
   const classes = useStyles();
 
   return (
@@ -40,4 +40,4 @@ const ConfirmView = () => {
   );
 };
 
-export default ConfirmView;
+export default ConfirmPage;

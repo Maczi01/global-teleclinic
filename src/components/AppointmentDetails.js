@@ -1,6 +1,5 @@
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper/Paper";
-import React from "react";
+import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card/Card";
@@ -13,7 +12,8 @@ import Radio from "@material-ui/core/Radio/Radio";
 import ChatIcon from "@material-ui/icons/Chat";
 import VoiceChatIcon from "@material-ui/icons/VoiceChat";
 import PhoneIcon from "@material-ui/icons/Phone";
-import { formatDate } from "./utils";
+import { formatDate } from "../utils/utils";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -48,82 +48,84 @@ const useStyles = makeStyles(() => ({
   content: {
     flex: "1 0 auto",
   },
+  disabledButton: {
+    color: "rgba(0, 0, 0, 0.26)",
+    border: "1px solid rgba(0, 0, 0, 0.26)",
+  },
 }));
 
-const AppointmentDetails = ({
-  doctor,
-  onChangeValueContact,
-  onChangeValuePayment,
-}) => {
+const AppointmentDetails = ({ doctor }) => {
   const classes = useStyles();
   const { date } = doctor;
+
+  const [contact, setContact] = useState();
+  const [disabled, setDisabled] = useState(true);
+  const [selectedDoctor, setSelectedDoctor] = useState();
+  const [payment, setPayment] = useState();
+
+
+  const onChangeValueContact = (e) => {
+    setContact(e.target.value);
+    setDisabled((prev) => !prev);
+    console.log(contact);
+  };
+
   return (
     <Card p={8} className={classes.root}>
-      <Typography variant="h4">Termin konsultacji: {formatDate(date)}</Typography>
+      <Typography variant="h4">
+        Termin konsultacji: {formatDate(date)}
+      </Typography>
       <Box>
-        <RadioGroup
-          value="video"
-          onChange={onChangeValueContact}
-          className={classes.radio}
+        <ButtonGroup
+        // value="video"
+        // onChange={onChangeValueContact}
+        // className={classes.radio}
         >
-          <FormControlLabel
+          <Button
             value="chat"
-            control={
-              <Button
-                type="submit"
-                variant="outlined"
-                color="secondary"
-                disableElevation
-                startIcon={<ChatIcon />}
-              >
-                Przez czat
-              </Button>
-            }
-            onChange={onChangeValueContact}
-          />
-          <FormControlLabel
-            value="video"
-            control={
-              <Button
-                type="submit"
-                variant="outlined"
-                color="secondary"
-                disableElevation
-                disabled
-                startIcon={<VoiceChatIcon />}
-              >
-                Przez wideo-czat
-              </Button>
-            }
-          />
-          <FormControlLabel
+            variant="outlined"
+            color="secondary"
+            disableElevation
+            startIcon={<ChatIcon />}
+            onClick={(e) => onChangeValueContact(e)}
+            className={disabled ? classes.disabledButton : ""}
+          >
+            Przez czat
+          </Button>
+          <Button
+            value="videochat"
+            variant="outlined"
+            color="secondary"
+            disableElevation
+            className={disabled ? classes.disabledButton : ""}
+            onClick={(e) => onChangeValueContact(e)}
+            startIcon={<VoiceChatIcon />}
+          >
+            Przez wideo-czat
+          </Button>
+          <Button
             value="phone"
-            control={
-              <Button
-                type="submit"
-                variant="outlined"
-                color="secondary"
-                disableElevation
-                startIcon={<PhoneIcon />}
-              >
-                Przez wideo-czat
-              </Button>
-            }
-          />
-        </RadioGroup>
+            variant="outlined"
+            color="secondary"
+            disableElevation
+            startIcon={<PhoneIcon />}
+            onClick={(e) => onChangeValueContact(e)}
+            className={disabled ? classes.disabledButton : ""}
+          >
+            Przez telefon
+          </Button>
+        </ButtonGroup>
       </Box>
       <Box>
         <RadioGroup>
           <FormControlLabel
             value="subscription"
             control={<Radio color="secondary" />}
-            onChange={onChangeValuePayment}
             label="W abonamencie"
-          />{" "}
+          />
           <FormControlLabel
             value="paymentOnce"
             control={<Radio color="secondary" />}
-            onChange={onChangeValuePayment}
             label="Płatność jednorazowa"
           />
         </RadioGroup>
@@ -132,6 +134,7 @@ const AppointmentDetails = ({
         type="submit"
         variant="contained"
         color="secondary"
+        // disabled={!payment}
         disableElevation
       >
         Umów konsultację

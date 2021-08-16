@@ -4,9 +4,9 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card/Card";
-import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
+import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
@@ -41,12 +41,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DoctorCard = ({ doctor }) => {
-  const { description, name, position } = doctor;
-  const cutDescription = (description) =>
-    description.length > 50
-      ? `${description.substring(0, 130)}...`
-      : description;
+const DoctorCard = ({ consultation }) => {
+  const { description, name, position } = consultation;
 
   const classes = useStyles();
   console.log(description);

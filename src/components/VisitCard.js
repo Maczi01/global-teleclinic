@@ -40,12 +40,12 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const VisitCard = ({visit, handleDoctor}) => {
+const VisitCard = ({visit, handleVisit}) => {
     const {name, position, date} = visit;
     const d = new Date(date);
     const classes = useStyles();
     return (
-        <Card onClick={handleDoctor} className={classes.root} bgcolor="text.primary">
+        <Card onClick={handleVisit} className={classes.root} bgcolor="text.primary">
             <CardContent>
                 {/*TODO nazwa classes box czy classes paper?*/}
                 <Paper className={classes.box} disabledElavation>
