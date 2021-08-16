@@ -48,6 +48,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
   },
   content: {
+    margin: "0 20px",
     flex: "1 0 auto",
   },
 }));
@@ -65,7 +66,7 @@ const VisitCard = ({ visit, handleVisit, active }) => {
     >
       <CardContent>
         {/*TODO nazwa classes box czy classes paper?*/}
-        <Paper className={classes.box}>
+        <Paper className={active ? classes.box : classes.box1}>
           <Typography variant="h6">
             {d.getDate()}.{d.getMonth()}
           </Typography>

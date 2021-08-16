@@ -98,7 +98,7 @@ const RightSide = ({ consultation }) => {
   };
 
   return (
-    <Grid container item xs={12} sm={8} md={6}  >
+    <Grid  item xs={12} sm={8} md={6}  >
       <Grid className={classes.content} container>
         <>
           <DoctorCard

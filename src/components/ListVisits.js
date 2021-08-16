@@ -3,6 +3,7 @@ import VisitCard from "./VisitCard";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import React, { useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
+import ProgressCircle from "./ProgressCircle";
 
 const ListVisits = ({ handleVisit }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,26 +28,17 @@ const ListVisits = ({ handleVisit }) => {
     fetchData();
   }, []);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState();
   return (
     <Grid container item md={6} >
       {isLoading ? (
-        <Box
-          display="flex"
-          height="100vh"
-          alignItems="center"
-          margin="0 auto"
-          justifyContent="center"
-        >
-          <CircularProgress color="secondary" />
-        </Box>
+       <ProgressCircle/>
       ) : (
-        availableVisits.map((visit, index) => (
+        availableVisits.map((visit) => (
           <VisitCard
             key={visit.id}
             visit={visit}
-            active={index === currentIndex}
-            onClick={() => console.log(index)}
+            active={visit.id === currentIndex}
             handleVisit={() => handleVisit(visit)}
           />
         ))
