@@ -64,27 +64,16 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Appointment = ({
-  doctor,
-  submitVisit,
-  onChangeValuePayment,
-}) => {
-  const { date, name, position, description } = doctor;
+const ConsultationForm = ({ date, submitVisit, onChangeValuePayment }) => {
   const classes = useStyles();
-  const [disabled, setDisabled] = useState(true);
-    const [active, setActive] = useState();
-    const [contact, setContact] = useState();
+  const [contact, setContact] = useState("chat");
 
-    const onChangeValueContact = (contactType) => {
-        setContact(contactType);
-        setActive(contactType)
-        console.log(contact);
-    };
+  const onChangeValueContact = (contactType) => {
+    setContact(contactType);
+  };
 
-
-    return (
+  return (
     <>
-      <DoctorCard />
       <Card p={8} className={classes.visit}>
         <Typography variant="h4">
           Termin konsultacji: {formatDate(date)}
@@ -97,7 +86,7 @@ const Appointment = ({
               disableElevation
               startIcon={<ChatIcon />}
               onClick={() => onChangeValueContact("chat")}
-              className={active === "chat" ? classes.disabledButton : ""}
+              className={contact === "chat" ? "" :classes.disabledButton}
             >
               Przez czat
             </Button>
@@ -105,7 +94,7 @@ const Appointment = ({
               variant="outlined"
               color="secondary"
               disableElevation
-              className={active === "videochat" ? classes.disabledButton : ""}
+              className={contact === "videochat" ? "" :classes.disabledButton}
               onClick={() => onChangeValueContact("videochat")}
               startIcon={<VoiceChatIcon />}
             >
@@ -117,7 +106,7 @@ const Appointment = ({
               disableElevation
               startIcon={<PhoneIcon />}
               onClick={() => onChangeValueContact("phone")}
-              className={active === "phone" ?   "" : classes.disabledButton}
+              className={contact === "phone" ? "" :classes.disabledButton}
             >
               Przez telefon
             </Button>
@@ -140,7 +129,6 @@ const Appointment = ({
             type="submit"
             variant="contained"
             color="secondary"
-            // disabled={!payment}
             disableElevation
           >
             Umów konsultację
@@ -150,4 +138,4 @@ const Appointment = ({
     </>
   );
 };
-export default Appointment;
+export default ConsultationForm;

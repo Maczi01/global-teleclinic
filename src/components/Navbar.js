@@ -32,7 +32,7 @@ const Navbar = () => {
     <div className={classes.root}>
       <AppBar className={classes.bar} position="static" elevation={0}>
         <Toolbar>
-          <Link to={"/confirmed"}>
+          <Link to={"/"}>
             <IconButton
               edge="start"
               className={classes.menuButton}

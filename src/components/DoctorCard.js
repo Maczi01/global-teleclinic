@@ -1,5 +1,4 @@
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper/Paper";
 import React from "react";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
@@ -7,6 +6,7 @@ import Card from "@material-ui/core/Card/Card";
 import Grid from "@material-ui/core/Grid";
 
 import { makeStyles } from "@material-ui/core";
+import {cutDescription} from "../utils/utils";
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
@@ -18,13 +18,6 @@ const useStyles = makeStyles(() => ({
     width: "100%",
   },
   box: {
-    // width: "200px",
-    // height: "100px",
-    // backgroundColor: "rgb(220, 0, 78)",
-    // display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "center",
-    // alignItems: "center",
     margin: "10px",
   },
   avatar: {
@@ -41,20 +34,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DoctorCard = ({ consultation }) => {
-  const { description, name, position } = consultation;
-
+const DoctorCard = ({ description, name, position }) => {
   const classes = useStyles();
-  console.log(description);
   return (
     <Card p={8} className={classes.root} md={6}>
       <Box className={classes.box}>
-        {/*  TODO zmienić fontweight na bold*/}
         <Typography variant="h4">{name}</Typography>
         <Typography variant="body1">{position}</Typography>
         <Typography variant="body2">
-          {/*{cutDescription(description)}*/}
-          {description}
+          {cutDescription(description)}
         </Typography>
       </Box>
       <Avatar className={classes.avatar}>H</Avatar>

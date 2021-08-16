@@ -1,28 +1,97 @@
 import Grid from "@material-ui/core/Grid";
-import Appointment from "./Appointment";
 import Information from "./Information";
-import React, {useState} from "react";
+import React, { useState } from "react";
+import ConsultationForm from "./ConsultationForm";
+import DoctorCard from "./DoctorCard";
+import Card from "@material-ui/core/Card/Card";
+import Typography from "@material-ui/core/Typography";
+import { formatDate } from "../utils/utils";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import RadioGroup from "@material-ui/core/RadioGroup/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
+import Radio from "@material-ui/core/Radio/Radio";
+import { makeStyles } from "@material-ui/core";
+import ChatIcon from "@material-ui/icons/Chat";
+import VoiceChatIcon from "@material-ui/icons/VoiceChat";
+import PhoneIcon from "@material-ui/icons/Phone";
+import FormControl from "@material-ui/core/FormControl";
+import { useHistory } from "react-router";
 
-const RightSide = ({consultation, visit }) => {
-  const [contact, setContact] = useState();
+const useStyles = makeStyles(() => ({
+  root: {
+    display: "flex",
+    // flexDirection: "row",
+    justifyContent: "space-between",
+    height: "200px",
+    // padding: "20px",
+    margin: "0 auto",
+    width: "100%",
+  },
+  visit: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    // height: "200px",
+    padding: "20px",
+  },
+  box: {
+    // width: "200px",
+    // height: "100px",
+    // backgroundColor: "rgb(220, 0, 78)",
+    // display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "center",
+    // alignItems: "center",
+    margin: "10px",
+  },
+  avatar: {
+    width: "150px",
+    height: "150px",
+    margin: "10px",
+  },
+  details: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  content: {
+    flex: "1 0 auto",
+  },
+  disabledButton: {
+    color: "rgba(0, 0, 0, 0.26)",
+    border: "1px solid rgba(0, 0, 0, 0.26)",
+  },
+  activeButton: {
+    color: "primary",
+    border: "1px solid rgba(0, 0, 0, 0.26)",
+  },
+}));
+
+const RightSide = ({ consultation }) => {
+  const [contact, setContact] = useState("chat");
   const [payment, setPayment] = useState();
+  const history = useHistory();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const classes = useStyles();
+
+  const { date, name, position, description } = consultation;
 
   const submitVisit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setTimeout(() => {
-      // console.log({ doctor: selectedDoctor.name, payment, contact });
-    }, 5000);
+      console.log({ doctorName: name, payment, contact, date });
+      setIsSubmitting(false);
+      history.push("/confirmed");
+    }, 1000);
   };
 
   const onChangeValuePayment = (e) => {
-    // setPayment(e.target.value);
-    console.log(e.target.value);
+    setPayment(e.target.value);
   };
 
   const onChangeValueContact = (contactType) => {
     setContact(contactType);
-    // setDisabled/((prev) => !prev);/
-    console.log(contact);
   };
 
   return (
@@ -33,17 +102,76 @@ const RightSide = ({consultation, visit }) => {
         justifyContent="center"
         alignItems="center"
       >
-        {consultation ? (
-          <Appointment
-              consultation={consultation}
-            // contact={contact}
-            // payment={payment}
-            // submitVisit={submitVisit}
-            // onChangeValuePayment={onChangeValuePayment}
+        <>
+          <DoctorCard
+            name={name}
+            position={position}
+            description={description}
           />
-        ) : (
-          <Information />
-        )}
+
+          <Card p={8} className={classes.visit}>
+            <Typography variant="h4">
+              Termin konsultacji: {formatDate(date)}
+            </Typography>
+            <form onSubmit={submitVisit}>
+              <Box>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  disableElevation
+                  startIcon={<ChatIcon />}
+                  onClick={() => onChangeValueContact("chat")}
+                  className={contact === "chat" ? "" : classes.disabledButton}
+                >
+                  Przez czat
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  disableElevation
+                  className={contact === "videochat" ? "" : classes.disabledButton}
+                  onClick={() => onChangeValueContact("videochat")}
+                  startIcon={<VoiceChatIcon />}
+                >
+                  Przez wideo-czat
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  disableElevation
+                  startIcon={<PhoneIcon />}
+                  onClick={() => onChangeValueContact("phone")}
+                  className={contact === "phone" ? "" : classes.disabledButton}
+                >
+                  Przez telefon
+                </Button>
+              </Box>
+              <Box>
+                <RadioGroup onChange={(e) => onChangeValuePayment(e)}>
+                  <FormControlLabel
+                    value="subscription"
+                    control={<Radio color="secondary" />}
+                    label="W abonamencie"
+                  />
+                  <FormControlLabel
+                    value="paymentOnce"
+                    control={<Radio color="secondary" />}
+                    label="Płatność jednorazowa"
+                  />
+                </RadioGroup>
+              </Box>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                disableElevation
+                disabled={isSubmitting}
+              >
+                Umów konsultację
+              </Button>
+            </form>
+          </Card>
+        </>
       </Grid>
     </Grid>
   );

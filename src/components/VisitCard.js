@@ -27,6 +27,15 @@ const useStyles = makeStyles(() => ({
         justifyContent: "center",
         alignItems: "center",
     },
+    box1: {
+        width: "200px",
+        height: "100px",
+        backgroundColor: "rgb(194,220,50)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+    },
     avatar: {
         width: "50px",
         height: "50px",
@@ -40,7 +49,7 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const VisitCard = ({visit, handleVisit}) => {
+const VisitCard = ({visit, handleVisit, active}) => {
     const {name, position, date} = visit;
     const d = new Date(date);
     const classes = useStyles();
@@ -48,7 +57,7 @@ const VisitCard = ({visit, handleVisit}) => {
         <Card onClick={handleVisit} className={classes.root} bgcolor="text.primary">
             <CardContent>
                 {/*TODO nazwa classes box czy classes paper?*/}
-                <Paper className={classes.box} disabledElavation>
+                <Paper  className={active ? classes.box : classes.box1} >
                     <Typography variant="h6">
                         {d.getDate()}.{d.getMonth()}
                     </Typography>

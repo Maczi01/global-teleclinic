@@ -9,11 +9,11 @@ export const formatDate = (date) => {
   const minute = objDate.getMinutes();
   console.log(day - today);
   const daysDifference = day - today;
-  const diff = text(daysDifference);
+  const diff = textWithDate(daysDifference);
   return `${diff} ${day} ${month} ${year}, godz. ${hour}:${minute} `;
 };
 
-const text = (d) => {
+const textWithDate = (d) => {
   switch (d) {
     case 0:
       return "dzisiaj";
@@ -24,4 +24,8 @@ const text = (d) => {
     default:
       return "";
   }
+};
+
+export const cutDescription = (description) => {
+  return description.length > 150 ? description.substring(0, 150) : description;
 };

@@ -5,15 +5,13 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Information from "../components/Information";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Appointment from "../components/Appointment";
 import VisitCard from "../components/VisitCard";
 import RightSide from "../components/RightSide";
 import PageTemplate from "../templates/PageTemplate";
-import LeftSide from "../components/LeftSide";
+import ListVisits from "../components/ListVisits";
 
 const MakeAppointmentView = () => {
   const [availableVisits, setAvailableVisits] = useState();
-
   const [consultation, setConsultation] = useState();
 
   useEffect(() => {
@@ -23,19 +21,22 @@ const MakeAppointmentView = () => {
   }, []);
 
   const handleVisit = (d) => {
-    console.log("clicked")
     setConsultation(d);
-    console.log(consultation)
   };
 
   return (
     <PageTemplate>
-      {/*<Navbar />*/}
       <Grid container component="main">
-        <LeftSide availableVisits={availableVisits} handleVisit={handleVisit} />
-        <RightSide consultation={consultation} />
+        <ListVisits
+          availableVisits={availableVisits}
+          handleVisit={handleVisit}
+        />
+        {consultation ? (
+          <RightSide consultation={consultation} />
+        ) : (
+          <Information />
+        )}
       </Grid>
-      {/*<Footer />*/}
     </PageTemplate>
   );
 };
