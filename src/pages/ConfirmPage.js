@@ -13,7 +13,6 @@ const useStyles = makeStyles({
     width: "100%",
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
     alignItems: "center",
     justifyContent: "center",
     margin: "0 auto",
@@ -28,10 +27,10 @@ const ConfirmPage = () => {
       <Navbar />
       <div className={classes.root}>
         <Typography variant="h3" component="div">
-          <Box fontWeight="fontWeightBold" m={1}>Konsultacja została umówiona</Box>
+          <Box fontWeight="fontWeightBold" m={2}>Konsultacja została umówiona</Box>
         </Typography>
         <Typography variant="h6" component="div">
-          <Box m={1}>Dziękujemy za skorzystanie z usługi </Box>
+          <Box m={4}>Dziękujemy za skorzystanie z usługi </Box>
         </Typography>
         <img src={confirmImage} alt="logo" />
       </div>

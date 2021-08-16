@@ -15,9 +15,9 @@ import VoiceChatIcon from "@material-ui/icons/VoiceChat";
 const Informaton = () => (
   <Box
     display="flex"
-    height="100vh"
     alignItems="center"
     justifyContent="center"
+    margin="0 auto"
   >
       Wybierz datę, umówić konsultację
   </Box>
