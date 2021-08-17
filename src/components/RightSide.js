@@ -29,12 +29,16 @@ const useStyles = makeStyles(() => ({
     direction: "column",
     justifyContent: "center",
     alignItems: "center",
+    padding: "4px 20px",
+    // margin: "2px 10px",
   },
   visit: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     // height: "200px",
+    margin: "2px 10px",
+
     padding: "20px",
   },
   box: {
@@ -67,6 +71,10 @@ const useStyles = makeStyles(() => ({
     color: "primary",
     border: "1px solid rgba(0, 0, 0, 0.26)",
   },
+  buttons: {
+  display: "flex",
+  justifyContent: "space-between",
+},
 }));
 
 const RightSide = ({ consultation }) => {
@@ -98,7 +106,7 @@ const RightSide = ({ consultation }) => {
   };
 
   return (
-    <Grid  item xs={12} sm={8} md={6}  >
+    <Grid item xs={12} sm={12} md={6}>
       <Grid className={classes.content} container>
         <>
           <DoctorCard
@@ -108,11 +116,13 @@ const RightSide = ({ consultation }) => {
           />
 
           <Card p={8} className={classes.visit}>
-            <Typography variant="h4">
-              Termin konsultacji: {formatDate(date)}
+            <Typography>
+              <Box fontSize={24} fontWeight={700}>
+                Termin konsultacji: {formatDate(date)}
+              </Box>
             </Typography>
             <form onSubmit={submitVisit}>
-              <Box>
+              <Box className={classes.buttons}>
                 <Button
                   variant="outlined"
                   color="secondary"

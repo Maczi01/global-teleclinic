@@ -9,30 +9,42 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
+    height: "100px",
     padding: "4px 20px",
     margin: "2px 20px",
-    backgroundColor: "rgb(194,220,50)",
+    // backgroundColor: "rgb(194,220,50)",
   },
-  box: {
+
+  root1: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    height: "100px",
+    padding: "4px 20px",
+    margin: "2px 20px",
+  },
+  inActive: {
     width: "120px",
     height: "70px",
-    backgroundColor: "rgb(220, 0, 78)",
+    backgroundColor: "#eeeeee",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
-  box1: {
-    width: "150px",
-    height: "90px",
-    backgroundColor: "rgb(194,220,50)",
+  active: {
+    width: "120px",
+    height: "70px",
+    backgroundColor: "#f50057",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -61,26 +73,44 @@ const VisitCard = ({ visit, handleVisit, active }) => {
     <Card
       onClick={handleVisit}
       className={classes.root}
-      bgcolor="text.primary"
       elevation={2}
+      display={{ xs: "none", sm: "none", md: "none", lg: "none" }}
     >
       <CardContent>
         {/*TODO nazwa classes box czy classes paper?*/}
-        <Paper className={active ? classes.box : classes.box1}>
-          <Typography variant="h6">
-            {d.getDate()}.{d.getMonth()}
+        <Box className={active ? classes.active : classes.inActive}>
+          {/*TODO sprawdzić zaokrąglenia*/}
+          <Typography align="center">
+            <Box variant="h6"
+                 color={active ? "#ffffff" : "#000000"}
+
+            >
+              {d.getDate()}.{d.getMonth()}
+            </Box>
+            <Box
+              fontSize={24}
+              fontWeight={700}
+              color={active ? "#ffffff" : "#f50057"}
+              variant="h5"
+            >
+              {d.getHours()}:{d.getMinutes()}
+            </Box>
           </Typography>
-          <Typography variant="h5">
-            {d.getHours()}:{d.getMinutes()}
-          </Typography>
-        </Paper>
+        </Box>
       </CardContent>
-      <Avatar className={classes.avatar}>H</Avatar>
+      <Box display={{ xs: "none", sm: "none", md: "none", lg: "none" }}>
+        <Avatar className={classes.avatar}>H</Avatar>
+      </Box>
       <Typography className={classes.content}>
-        <Box fontWeight={700}>lek. {name}</Box>
+        <Box
+          // display={{ xs: "none", sm: "none", md: "none", lg: "none" }}
+          fontWeight={700}
+        >
+          lek. {name}
+        </Box>
         <Box fontWeight={500}>{position}</Box>
       </Typography>
-      <ArrowForwardIosIcon />
+      {active ? <ArrowForwardIosIcon /> : null}
     </Card>
   );
 };

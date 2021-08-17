@@ -19,7 +19,7 @@ const MakeAppointmentView = () => {
 
   return (
     <PageTemplate>
-      <Grid container component="main">
+      <Grid container component="main" >
         <ListVisits handleVisit={handleVisit} />
         {consultation ? (
           <RightSide consultation={consultation} />

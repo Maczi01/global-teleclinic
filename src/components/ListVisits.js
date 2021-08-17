@@ -29,17 +29,26 @@ const ListVisits = ({ handleVisit }) => {
   }, []);
 
   const [currentIndex, setCurrentIndex] = useState();
+
+  const someFunction = (visit) => {
+    handleVisit(visit);
+    setCurrentIndex(visit.id)
+  }
+
   return (
-    <Grid container item md={6} >
-      {isLoading ? (
-       <ProgressCircle/>
+    <Grid container item md={6}>
+      {isError ? (
+        //  TODO dodać refetch
+        <p> Problem z ładowaniem danych</p>
+      ) : isLoading ? (
+        <ProgressCircle />
       ) : (
         availableVisits.map((visit) => (
           <VisitCard
             key={visit.id}
             visit={visit}
             active={visit.id === currentIndex}
-            handleVisit={() => handleVisit(visit)}
+            handleVisit={() => someFunction(visit)}
           />
         ))
       )}
@@ -48,46 +57,3 @@ const ListVisits = ({ handleVisit }) => {
 };
 
 export default ListVisits;
-
-{
-  /*  {availableVisits ? (*/
-}
-{
-  /*      availableVisits.map((visit, index) => (*/
-}
-{
-  /*          <VisitCard*/
-}
-{
-  /*              key={visit.id}*/
-}
-{
-  /*              visit={visit}*/
-}
-{
-  /*              active={index === currentIndex}*/
-}
-{
-  /*              onClick={() => console.log(index)}*/
-}
-{
-  /*              handleVisit={() => handleVisit(visit)}*/
-}
-{
-  /*          />*/
-}
-{
-  /*      ))*/
-}
-{
-  /*  ) : (*/
-}
-{
-  /*      <CircularProgress color="secondary" />*/
-}
-{
-  /*  )}*/
-}
-{
-  /*</Grid>*/
-}
