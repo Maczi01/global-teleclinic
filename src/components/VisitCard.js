@@ -8,6 +8,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
+import {getDayAndMonth, getHour} from "../utils/utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,36 +20,24 @@ const useStyles = makeStyles((theme) => ({
     height: "100px",
     padding: "4px 20px",
     margin: "2px 20px",
-    // backgroundColor: "rgb(194,220,50)",
-  },
-
-  root1: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-    height: "100px",
-    padding: "4px 20px",
-    margin: "2px 20px",
-  },
-  inActive: {
-    width: "120px",
-    height: "70px",
-    backgroundColor: "#eeeeee",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      height: "60px",
+      padding: "2px 6px",
+    },
   },
   active: {
     width: "120px",
     height: "70px",
-    backgroundColor: "#f50057",
+    backgroundColor: (active) => (active ? "#f50057" : "#eeeeee"),
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      height: "45px",
+      padding: "4px 6px",
+      width: "90px",
+    },
   },
   avatar: {
     width: "80px",
@@ -65,27 +54,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const VisitCard = ({ visit, handleVisit, active }) => {
+const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
   const { name, position, date } = visit;
-  const d = new Date(date);
-  const classes = useStyles();
+  const classes = useStyles(active);
   return (
     <Card
-      onClick={handleVisit}
+      onClick={chooseCurrentVisit}
       className={classes.root}
       elevation={2}
       display={{ xs: "none", sm: "none", md: "none", lg: "none" }}
     >
       <CardContent>
         {/*TODO nazwa classes box czy classes paper?*/}
-        <Box className={active ? classes.active : classes.inActive}>
+        <Box className={classes.active}>
           {/*TODO sprawdzić zaokrąglenia*/}
           <Typography align="center">
-            <Box variant="h6"
-                 color={active ? "#ffffff" : "#000000"}
-
-            >
-              {d.getDate()}.{d.getMonth()}
+            <Box variant="h6" color={active ? "#ffffff" : "#000000"}>
+              {getDayAndMonth(date)}
             </Box>
             <Box
               fontSize={24}
@@ -93,24 +78,22 @@ const VisitCard = ({ visit, handleVisit, active }) => {
               color={active ? "#ffffff" : "#f50057"}
               variant="h5"
             >
-              {d.getHours()}:{d.getMinutes()}
+              {getHour(date)}
             </Box>
           </Typography>
         </Box>
       </CardContent>
-      <Box display={{ xs: "none", sm: "none", md: "none", lg: "none" }}>
+      <Box display={{ xs: "none", sm: "none", md: "block" }}>
         <Avatar className={classes.avatar}>H</Avatar>
       </Box>
       <Typography className={classes.content}>
-        <Box
-          // display={{ xs: "none", sm: "none", md: "none", lg: "none" }}
-          fontWeight={700}
-        >
-          lek. {name}
-        </Box>
+        <Box fontWeight={700}>lek. {name}</Box>
         <Box fontWeight={500}>{position}</Box>
       </Typography>
-      {active ? <ArrowForwardIosIcon /> : null}
+      <Box display={{ xs: "none", sm: "none", md: "block" }}>
+
+        <ArrowForwardIosIcon style={{ color: "#f50057", display: active ? "block" : "none" }} />
+      </Box>
     </Card>
   );
 };

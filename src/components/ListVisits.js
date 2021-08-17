@@ -30,13 +30,13 @@ const ListVisits = ({ handleVisit }) => {
 
   const [currentIndex, setCurrentIndex] = useState();
 
-  const someFunction = (visit) => {
+  const chooseCurrentVisit = (visit) => {
     handleVisit(visit);
     setCurrentIndex(visit.id)
   }
 
   return (
-    <Grid container item md={6}>
+    <Grid container item md={6} >
       {isError ? (
         //  TODO dodać refetch
         <p> Problem z ładowaniem danych</p>
@@ -48,7 +48,7 @@ const ListVisits = ({ handleVisit }) => {
             key={visit.id}
             visit={visit}
             active={visit.id === currentIndex}
-            handleVisit={() => someFunction(visit)}
+            chooseCurrentVisit={() => chooseCurrentVisit(visit)}
           />
         ))
       )}
