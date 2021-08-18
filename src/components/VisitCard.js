@@ -63,6 +63,8 @@ const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
       className={classes.root}
       elevation={2}
       display={{ xs: "none", sm: "none", md: "none", lg: "none" }}
+      data-testid="card"
+
     >
       <CardContent>
         {/*TODO nazwa classes box czy classes paper?*/}

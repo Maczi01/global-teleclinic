@@ -16,7 +16,7 @@ import VoiceChatIcon from "@material-ui/icons/VoiceChat";
 import PhoneIcon from "@material-ui/icons/Phone";
 import FormControl from "@material-ui/core/FormControl";
 import { useHistory } from "react-router";
-import { db } from "../firebase/firebaseConfig";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -64,7 +64,10 @@ const RightSide = ({ consultation }) => {
   const [contact, setContact] = useState("chat");
   const [payment, setPayment] = useState("subscription");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isError, setIsError] = useState(false);
 
+  const BASE_URL =
+    "https://global-teleclinic-default-rtdb.europe-west1.firebasedatabase.app/.json";
   const classes = useStyles();
   const history = useHistory();
   const { date, name, position, description } = consultation;
@@ -72,16 +75,26 @@ const RightSide = ({ consultation }) => {
   const submitVisit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsError(false);
 
-
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ doctorName: name, payment, contact, date }),
+    };
 
     setTimeout(() => {
-      console.log({ doctorName: name, payment, contact, date });
-
-
-      setIsSubmitting(false);
-      history.push("/confirmed");
-    }, 1000);
+      fetch(BASE_URL, requestOptions).then((response) => {
+        if (!response.ok) {
+          console.log("Cannot send data");
+          setIsError(true);
+        } else {
+          setIsSubmitting(false);
+          history.push("/confirmed");
+        }
+        setIsSubmitting(false);
+      });
+    }, 2000);
   };
 
   const onChangeValuePayment = (e) => {
@@ -143,6 +156,7 @@ const RightSide = ({ consultation }) => {
                 Przez telefon
               </Button>
             </Box>
+            <Divider />
             <Box>
               {/*TODO buttony powinny być różowe*/}
               <RadioGroup
@@ -154,6 +168,7 @@ const RightSide = ({ consultation }) => {
                   control={<Radio color="secondary" />}
                   label="W abonamencie"
                 />
+                <Divider />
                 <FormControlLabel
                   value="paymentOnce"
                   control={<Radio color="secondary" />}
@@ -167,9 +182,17 @@ const RightSide = ({ consultation }) => {
               color="secondary"
               disableElevation
               disabled={isSubmitting}
+              fullWidth
             >
               Umów konsultację
             </Button>
+            {isError && (
+              <Typography>
+                <Box mt={2} color="error.main">
+                  Nie udało się wysłać. Spróbuj ponownie
+                </Box>
+              </Typography>
+            )}
           </form>
         </Card>
       </Grid>

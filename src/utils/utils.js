@@ -43,5 +43,5 @@ export const getHourAndMinute = (date) => {
 }
 
 export const cutDescription = (description) => {
-  return description.length > 150 ? description.substring(0, 150) : description;
+  return description.length > 150 ? `${description.substring(0, 150)}... ` : description;
 };

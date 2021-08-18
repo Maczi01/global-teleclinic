@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card/Card";
 import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
 
 import { makeStyles } from "@material-ui/core";
 import { cutDescription } from "../utils/utils";
@@ -44,12 +45,22 @@ const DoctorCard = ({ description, name, position }) => {
     <Card className={classes.root} md={6}>
       <Box className={classes.box}>
         <Typography>
-          <Box fontWeight={700} fontSize={24}>{name}</Box>
-          <Box fontSize={16} >
-            {position}
+          <Box fontWeight={700} fontSize={24}>
+            {name}
           </Box>
+          <Box fontSize={16}>{position}</Box>
         </Typography>
-        <Typography variant="body2">{cutDescription(description)}</Typography>
+        <Typography variant="body2">
+          {cutDescription(description)}{" "}
+          <Link
+              href="#"
+              onClick={() => console.log("link")}
+              color="secondary"
+          >
+            {'więcej'}
+          </Link>
+        </Typography>
+        {/*<Typography color="secondary.main" variant="body2" > więcej</Typography>*/}
       </Box>
       <Box display={{ xs: "none", sm: "none", md: "block" }}>
         <Avatar className={classes.avatar}>H</Avatar>
