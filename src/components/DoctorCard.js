@@ -3,11 +3,10 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card/Card";
-import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
+import {makeStyles} from "@material-ui/core";
+import {cutDescription} from "../utils/utils";
 
-import { makeStyles } from "@material-ui/core";
-import { cutDescription } from "../utils/utils";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",

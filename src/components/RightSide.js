@@ -58,6 +58,12 @@ const useStyles = makeStyles(() => ({
     justifyContent: "space-between",
     margin: "10px 0",
   },
+  payment: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "10px 0",
+  },
 }));
 
 const RightSide = ({ consultation }) => {
@@ -163,17 +169,31 @@ const RightSide = ({ consultation }) => {
                 value={payment}
                 onChange={(e) => onChangeValuePayment(e)}
               >
-                <FormControlLabel
-                  value="subscription"
-                  control={<Radio color="secondary" />}
-                  label="W abonamencie"
-                />
+                  <Box className={classes.payment}>
+                    <FormControlLabel
+                      value="subscription"
+                      control={<Radio color="secondary" />}
+                      label="W abonamencie"
+                    />
+                    <Typography>
+                      <Box fontWeight={700} fontSize={24}>
+                        32,99 zł
+                      </Box>
+                    </Typography>
+                  </Box>
                 <Divider />
-                <FormControlLabel
-                  value="paymentOnce"
-                  control={<Radio color="secondary" />}
-                  label="Płatność jednorazowa"
-                />
+                <Box className={classes.payment}>
+                  <FormControlLabel
+                    value="paymentOnce"
+                    control={<Radio color="secondary" />}
+                    label="Płatność jednorazowa"
+                  />
+                  <Typography>
+                    <Box fontWeight={700} fontSize={24}>
+                      69,00 zł
+                    </Box>
+                  </Typography>
+                </Box>
               </RadioGroup>
             </Box>
             <Button
