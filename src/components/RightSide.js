@@ -63,6 +63,8 @@ const RightSide = ({ consultation }) => {
   const [contact, setContact] = useState("chat");
   const [payment, setPayment] = useState("subscription");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+
   const classes = useStyles();
   const history = useHistory();
   const { date, name, position, description } = consultation;
