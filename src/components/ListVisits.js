@@ -4,6 +4,8 @@ import CircularProgress from "@material-ui/core/CircularProgress/CircularProgres
 import React, { useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import ProgressCircle from "./ProgressCircle";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const ListVisits = ({ handleVisit }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,14 +34,29 @@ const ListVisits = ({ handleVisit }) => {
 
   const chooseCurrentVisit = (visit) => {
     handleVisit(visit);
-    setCurrentIndex(visit.id)
-  }
+    setCurrentIndex(visit.id);
+  };
 
   return (
-    <Grid container item md={6} >
+    <Grid container item md={6}>
       {isError ? (
-        //  TODO dodać refetch
-        <p> Problem z ładowaniem danych</p>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          margin="0 auto"
+          flexDirection="column"
+        >
+          <Typography> Problem z ładowaniem danych</Typography>
+          <Button
+            variant="contained"
+            color="secondary"
+            disableElevation
+            onClick={fetchData}
+          >
+            Spróbuj ponownie
+          </Button>
+        </Box>
       ) : isLoading ? (
         <ProgressCircle />
       ) : (

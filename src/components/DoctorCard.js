@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px 0",
     [theme.breakpoints.down("sm")]: {
       height: "120px",
-      padding: "5px",
+      padding: "0",
       margin: "5px 0",
     },
   },
@@ -45,12 +45,13 @@ const DoctorCard = ({ description, name, position }) => {
       <Box className={classes.box}>
         <Typography>
           <Box fontWeight={700} fontSize={24}>
+            {/*wprowadzić "lek" do jsona*/}
             {name}
           </Box>
           <Box fontSize={16}>{position}</Box>
         </Typography>
-        <Typography variant="body2">
-          {cutDescription(description)}{" "}
+        <Typography variant="body2"  >
+          {cutDescription(description)}
           <Link
               href="#"
               onClick={() => console.log("link")}
@@ -59,7 +60,6 @@ const DoctorCard = ({ description, name, position }) => {
             {'więcej'}
           </Link>
         </Typography>
-        {/*<Typography color="secondary.main" variant="body2" > więcej</Typography>*/}
       </Box>
       <Box display={{ xs: "none", sm: "none", md: "block" }}>
         <Avatar className={classes.avatar}>H</Avatar>

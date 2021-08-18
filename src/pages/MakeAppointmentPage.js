@@ -6,23 +6,23 @@ import Information from "../components/Information";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import VisitCard from "../components/VisitCard";
-import RightSide from "../components/RightSide";
+import VisitDetails from "../components/RightSide";
 import PageTemplate from "../templates/PageTemplate";
 import ListVisits from "../components/ListVisits";
 
 const MakeAppointmentView = () => {
-  const [consultation, setConsultation] = useState();
+  const [choosenVisit, setChoosenVisit] = useState();
 
   const handleVisit = (d) => {
-    setConsultation(d);
+      setChoosenVisit(d);
   };
 
   return (
     <PageTemplate>
       <Grid container component="main" >
         <ListVisits handleVisit={handleVisit} />
-        {consultation ? (
-          <RightSide consultation={consultation} />
+        {choosenVisit ? (
+          <VisitDetails choosenVisit={choosenVisit} />
         ) : (
           <Information />
         )}

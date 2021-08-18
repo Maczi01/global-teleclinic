@@ -66,7 +66,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const RightSide = ({ consultation }) => {
+const VisitDetails = ({ choosenVisit }) => {
   const [contact, setContact] = useState("chat");
   const [payment, setPayment] = useState("subscription");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,7 +76,7 @@ const RightSide = ({ consultation }) => {
     "https://global-teleclinic-default-rtdb.europe-west1.firebasedatabase.app/.json";
   const classes = useStyles();
   const history = useHistory();
-  const { date, name, position, description } = consultation;
+  const { date, name, position, description } = choosenVisit;
 
   const submitVisit = (e) => {
     e.preventDefault();
@@ -220,4 +220,4 @@ const RightSide = ({ consultation }) => {
   );
 };
 
-export default RightSide;
+export default VisitDetails;
