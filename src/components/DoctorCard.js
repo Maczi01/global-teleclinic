@@ -43,9 +43,11 @@ const DoctorCard = ({ description, name, position }) => {
   return (
     <Card className={classes.root} md={6}>
       <Box className={classes.box}>
-        <Typography variant="h4">{name}</Typography>
-        <Typography variant="body1" fontSize={24}>
-          {position}
+        <Typography>
+          <Box fontWeight={700} fontSize={24}>{name}</Box>
+          <Box fontSize={16} >
+            {position}
+          </Box>
         </Typography>
         <Typography variant="body2">{cutDescription(description)}</Typography>
       </Box>

@@ -29,19 +29,10 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     justifyContent: "space-between",
     width: "100%",
-    // height: "200px",
-    // margin: "2px 10px",
     margin: "10px 0",
     padding: "20px",
   },
   box: {
-    // width: "200px",
-    // height: "100px",
-    // backgroundColor: "rgb(220, 0, 78)",
-    // display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "center",
-    // alignItems: "center",
     margin: "10px",
   },
   avatar: {
@@ -53,9 +44,6 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
   },
-  // content: {
-  //   flex: "1 0 auto",
-  // },
   disabledButton: {
     color: "rgba(0, 0, 0, 0.26)",
     border: "1px solid rgba(0, 0, 0, 0.26)",
@@ -67,16 +55,16 @@ const useStyles = makeStyles(() => ({
   buttons: {
     display: "flex",
     justifyContent: "space-between",
+    margin: "10px 0",
   },
 }));
 
 const RightSide = ({ consultation }) => {
   const [contact, setContact] = useState("chat");
   const [payment, setPayment] = useState("subscription");
-  const history = useHistory();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const classes = useStyles();
-
+  const history = useHistory();
   const { date, name, position, description } = consultation;
 
   const submitVisit = (e) => {
@@ -104,7 +92,7 @@ const RightSide = ({ consultation }) => {
         <DoctorCard name={name} position={position} description={description} />
         <Card item p={8} md={6} className={classes.visit}>
           <Typography>
-            <Box fontSize={24} fontWeight={700}>
+            <Box fontWeight={700} fontSize={20}>
               Termin konsultacji: {getFormattedVisitDate(date)}
             </Box>
           </Typography>

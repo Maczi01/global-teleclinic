@@ -5,13 +5,10 @@ import { Switch } from "react-router";
 import ConfirmPage from "./pages/ConfirmPage";
 import { ThemeProvider } from "@material-ui/core/styles";
 import {createTheme} from "@material-ui/core";
+import theme from "./theme/theme";
 
-const theme = createTheme({
-  typography: {
-    fontFamily: ["Ubuntu", "Roboto"].join(","),
-  },
 
-});
+
 
 function App() {
   return (

@@ -8,7 +8,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import {getDayAndMonth, getHour} from "../utils/utils";
+import {getDayAndMonth, getHourAndMinute} from "../utils/utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,7 +78,7 @@ const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
               color={active ? "#ffffff" : "#f50057"}
               variant="h5"
             >
-              {getHour(date)}
+              {getHourAndMinute(date)}
             </Box>
           </Typography>
         </Box>

@@ -35,7 +35,7 @@ export const getDayAndMonth = (date) => {
     return `${dateToConvert.getDate()}.${month}`
 }
 
-export const getHour = (date) => {
+export const getHourAndMinute = (date) => {
   const dateToConvert = new Date(date)
   let minutes = dateToConvert.getMinutes();
   minutes =  minutes < 10 ? '0' + minutes : '' + minutes;
