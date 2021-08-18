@@ -16,6 +16,7 @@ import VoiceChatIcon from "@material-ui/icons/VoiceChat";
 import PhoneIcon from "@material-ui/icons/Phone";
 import FormControl from "@material-ui/core/FormControl";
 import { useHistory } from "react-router";
+import { db } from "../firebase/firebaseConfig";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -64,7 +65,6 @@ const RightSide = ({ consultation }) => {
   const [payment, setPayment] = useState("subscription");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-
   const classes = useStyles();
   const history = useHistory();
   const { date, name, position, description } = consultation;
@@ -72,8 +72,13 @@ const RightSide = ({ consultation }) => {
   const submitVisit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+
+
     setTimeout(() => {
       console.log({ doctorName: name, payment, contact, date });
+
+
       setIsSubmitting(false);
       history.push("/confirmed");
     }, 1000);
@@ -100,6 +105,8 @@ const RightSide = ({ consultation }) => {
           </Typography>
           <form onSubmit={submitVisit}>
             <Box className={classes.buttons}>
+              {/*TODO */}
+              {/*TODO dodać button group*/}
               <Button
                 variant="outlined"
                 color="secondary"
