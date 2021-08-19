@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import Typography from "@material-ui/core/Typography";
-import {getDayAndMonth, getHourAndMinute} from "../utils/utils";
+import { getDayAndMonth, getHourAndMinute } from "../utils/utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,12 +84,14 @@ const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
       <Box display={{ xs: "none", sm: "none", md: "block" }}>
         <Avatar className={classes.avatar}>H</Avatar>
       </Box>
-      <Box className={classes.content}>
-        <Box fontWeight={700}>lek. {name}</Box>
+      <Typography className={classes.content} component="div">
+        <Box fontWeight={700}>{name}</Box>
         <Box fontWeight={500}>{position}</Box>
-      </Box>
+      </Typography>
       <Box display={{ xs: "none", sm: "none", md: "block" }}>
-        <ArrowForwardIosIcon style={{ color: "#f50057", display: active ? "block" : "none" }} />
+        <ArrowForwardIosIcon
+          style={{ color: "#f50057", display: active ? "block" : "none" }}
+        />
       </Box>
     </Card>
   );

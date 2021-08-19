@@ -6,7 +6,6 @@ import Card from "@material-ui/core/Card/Card";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core";
 import { cutDescription } from "../utils/utils";
-import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,20 +43,21 @@ const DoctorCard = ({ description, name, position }) => {
   return (
     <Card className={classes.root} md={6}>
       <Box className={classes.box}>
-        <Box>
+        <Typography component="div">
           <Box fontWeight={700} fontSize={24}>
-            {/*wprowadzić "lek" do jsona*/}
             {name}
           </Box>
           <Box fontSize={16}>{position}</Box>
-        </Box>
-        <Box variant="body2">
+        </Typography>
+        <Typography component="div">
+          <Box variant="body2">
           {/*TODO przycinanie tekstu na mobilce*/}
           {cutDescription(description)}
-          <Link href="#" onClick={handleOpen} color="secondary">
+          <Link href="#"  color="secondary">
             {"więcej"}
           </Link>
         </Box>
+        </Typography>
       </Box>
       <Box display={{ xs: "none", sm: "none", md: "block" }}>
         <Avatar className={classes.avatar}>H</Avatar>
