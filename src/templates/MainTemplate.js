@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card/Card";
 
 const MainTemplate = ({ children }) => (
-  <Box bgcolor="text.disabled">
+  <Box bgcolor="#eeeeee">
     <Navbar />
     {children}
     <Box display={{ xs: "none", sm: "none", md: "block" }}>

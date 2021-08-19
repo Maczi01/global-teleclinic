@@ -70,19 +70,11 @@ const VisitDetails = ({ chosenVisit }) => {
   const [payment, setPayment] = useState("subscription");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isError, setIsError] = useState(false);
-  // const [visit, setVisit] = useState({
-  //   date,
-  //   position,
-  //   name,
-  //   description,
-  //   payment:"subscription",
-  //   contact:"chat"
-  // })
+  const { date, name, position, description } = chosenVisit;
   const BASE_URL =
     "https://global-teleclinic-default-rtdb.europe-west1.firebasedatabase.app/.json";
   const classes = useStyles();
   const history = useHistory();
-  const { date, name, position, description } = chosenVisit;
 
   const submitVisit = (e) => {
     e.preventDefault();
@@ -113,18 +105,19 @@ const VisitDetails = ({ chosenVisit }) => {
   };
 
   const onChangeValueContact = (e) => {
-    //TODO może dataset i generyczny handler?
     setContact(e.currentTarget.value);
   };
 
   return (
-    <Grid item sm={12} md={6}>
+    <Grid item container sm={12} md={6}>
       <Grid item className={classes.root} container>
         <DoctorCard name={name} position={position} description={description} />
         <Card p={8} md={6} className={classes.visit}>
-          <Box fontWeight={700} fontSize={20}>
-            Termin konsultacji: {getFormattedVisitDate(date)}
-          </Box>
+          <Typography component="div">
+            <Box fontWeight={700} fontSize={20}>
+              Termin konsultacji: {getFormattedVisitDate(date)}
+            </Box>
+          </Typography>
           <form onSubmit={submitVisit}>
             <Box className={classes.buttons}>
               <Button
@@ -165,7 +158,6 @@ const VisitDetails = ({ chosenVisit }) => {
             </Box>
             <Divider />
             <Box>
-              {/*TODO buttony powinny być różowe*/}
               <RadioGroup
                 value={payment}
                 onChange={(e) => onChangeValuePayment(e)}
@@ -187,6 +179,7 @@ const VisitDetails = ({ chosenVisit }) => {
                     control={<Radio color="secondary" />}
                     label="Płatność jednorazowa"
                   />
+
                   <Box fontWeight={700} fontSize={24}>
                     69,00 zł
                   </Box>

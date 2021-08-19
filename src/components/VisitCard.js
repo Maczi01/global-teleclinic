@@ -59,9 +59,8 @@ const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
     <Card
       onClick={chooseCurrentVisit}
       className={classes.root}
-      elevation={2}
       display={{ xs: "none", sm: "none", md: "none", lg: "none" }}
-      data-testid="box"
+      elevation={0}
     >
       <CardContent>
         {/*TODO nazwa classes box czy classes paper?*/}

@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px",
     margin: "10px 0",
     [theme.breakpoints.down("sm")]: {
-      height: "120px",
       padding: "0",
       margin: "5px 0",
     },
@@ -36,10 +35,12 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flex: "1 0 auto",
   },
+
 }));
 
 const DoctorCard = ({ description, name, position }) => {
   const classes = useStyles();
+
   return (
     <Card className={classes.root} md={6}>
       <Box className={classes.box}>
@@ -50,13 +51,12 @@ const DoctorCard = ({ description, name, position }) => {
           <Box fontSize={16}>{position}</Box>
         </Typography>
         <Typography component="div">
-          <Box variant="body2">
-          {/*TODO przycinanie tekstu na mobilce*/}
-          {cutDescription(description)}
-          <Link href="#"  color="secondary">
-            {"więcej"}
-          </Link>
-        </Box>
+          <Box variant="body2" >
+            {cutDescription(description)}
+            <Link href="#" color="secondary">
+              {"więcej"}
+            </Link>
+          </Box>
         </Typography>
       </Box>
       <Box display={{ xs: "none", sm: "none", md: "block" }}>
