@@ -3,35 +3,35 @@
     "id": 1,
     "name": "Doktor Paj-chi-wo",
     "position": "internista",
-    "description": "Jestem absolwentem Wydziału Lekarskiego Collegium Medicum Uniwersytetu Jagiellońskiego w Krakowie. W 2011 roku uzyskałem specjalizację z zakresu chirurgii dziecięcej a w 2015 roku specjalisty urologii dziecięcej. ",
+    "description": "postać fikcyjna, chiński uczony i nadworny lekarz cesarza Chin, a także mistrz i nauczyciel Ambrożego Kleksa w akademii w Salamance. To Paj-Chi-Wo ofiarował panu Kleksowi jego sekrety, które w Akademii pana Kleksa (1946) niszczy kukła (Alojzy Kukuryk) zbudowana przez Golarza Filipa. To on również podarował Mateuszowi czapkę bogdychanów, przy pomocy której ucieka on przed wilkami zamieniając się w szpaka.\n\nWzmianki o Chińczyku pojawiają się także w dwóch kolejnych tomach przygód pana Kleksa – Podróżach Pana Kleksa (1961) i Tryumfie Pana Kleksa (1965). Nie odgrywa już on tam jednak tak wielkiej roli, jak w tomie pierwszym. Doktor Paj-Chi-Wo pojawia się też w większości filmów o panu Kleksie. W Akademii pana Kleksa oraz Podróżach pana Kleksa postać tę kreuje Wiesław Michnikowski, natomiast w filmie Pan Kleks w kosmosie w rolę doktora Paj-Chi-Wo wcielił się Witold Dębicki.",
     "date": "2021-08-14T18:05:43.511Z"
   },
   {
     "id": 2,
-    "name": "Jakub Burski",
+    "name": "Rudolf Wstrząs",
     "position": "anestozjolog",
-    "description": "Jestem absolwentem  Collegium Medicum Uniwersytetu Jagiellońskiego. Pracuję w Klinicznym Oddziale Dermatologicznym Śląskiego Uniwersytetu Medycznego w Katowicach jako lekarz rezydent. Jestem Członkiem Polskiego Towarzystwa Dermatologicznego oraz doktorantem Śląskiego Uniwersytetu medycznego.",
+    "description": "Były mąż siostry Barbary Es. W przeszłości pracował jako lekarz w Afryce, gdzie zadarł z królem miejscowego plemienia. Ma dziadka w Kanadzie. Bbardzo dobrze tańczy, wygrał nawet kilka konkursów (Roztańczony dr Wstrząs, Trzech młodych studentów, Ranny ptaszek, Jak oni miauczą, Wielka promocja, Polowanie z sokołami, Ukryte kamery, Kuzyn czy kuzynka, Białe szaleństwo).",
     "date": "2021-08-14T18:05:43.511Z"
   },
   {
     "id": 3,
-    "name": "Dr Quinn",
-    "position": "urolog",
-    "description": "Lekarz ",
+    "name": "John Dolitle",
+    "position": "chirurg",
+    "description": "Doktor John Dolittle jest lekarzem, mieszka w Puddleby nad rzeką Marsh (Puddleby-on-the-Marsh). Pewnego dnia jego papuga, Polinezja, uczy go języka zwierząt. Od tej pory zostaje weterynarzem. Jest bardzo surowy, kiedy zwierzęta są źle traktowane. W czasie, gdy rozpoczyna się akcja pierwszego tomu, ma prawdopodobnie trzydzieści kilka lat. Opisywany jest jako mężczyzna niewielkiego wzrostu, krępy, ale przy tym sprawny i silny fizycznie. Nigdy nie był żonaty i poza siostrą, która pojawia się w książkach sporadycznie, nie ma krewnych.",
     "date": "2021-08-15T18:25:43.511Z"
   },
   {
     "id": 4,
     "name": "Gregory House",
-    "position": "urolog",
-    "description": "Lekarz z wieloletnim doświadczeniem w pracy za granicą. Absolwent Królewskiej Szkoły Chirurgów w Irlandii (RCSI), Członek Niemieckigo Towarzystwa Urolgicznego (DGU), Członek Europejskiego Towarzystwa Urologicznego (EAU).",
+    "position": "kardiolog",
+    "description": "Fikcyjny doktor medycyny i diagnosta z dramatu medycznego stacji FOX Dr House. Odgrywana przez Hugh Lauriego postać jest aroganckim, gardzącym zasadami geniuszem medycznym, głową zespołu diagnostycznego w fikcyjnym Princeton-Plainsboro Teaching Hospital. Postać House'a jest określana jako mizantrop, cynik, gbur, samotnik i outsider, brutalnie szczery, niegrzeczny. ",
     "date": "2021-08-16T18:25:43.511Z"
   },
   {
     "id": 5,
-    "name": "Dr Zywago",
-    "position": "urolog",
-    "description": "Lekarz z wieloletnim doświadczeniem w pracy za granicą. Absolwent Królewskiej Szkoły Chirurgów w Irlandii (RCSI), Członek Niemieckigo Towarzystwa Urolgicznego (DGU), Członek Europejskiego Towarzystwa Urologicznego (EAU).",
-    "date": "2021-11-17T18:25:43.511Z"
+    "name": "Dr Who",
+    "position": "pediatra",
+    "description": "Władca Czasu – podróżujący przez czas i przestrzeń humanoidalny obcy, znany jako Doktor. Zwiedza wszechświat w swojej TARDIS – żyjącym statku kosmicznym, który wygląda jak niebieska budka policyjna. W swoje podróże zabiera zwykle towarzyszy, których większość zalicza się do rodzaju ludzkiego. Podczas swych wycieczek po wszechświecie Doktor mierzy się z wrogami, ratuje cywilizacje, pomaga ludziom i naprawia błędy",
+    "date": "2021-08-17T18:25:43.511Z"
   }
 ]

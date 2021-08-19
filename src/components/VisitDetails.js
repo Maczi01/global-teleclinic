@@ -14,7 +14,6 @@ import { makeStyles } from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/Chat";
 import VoiceChatIcon from "@material-ui/icons/VoiceChat";
 import PhoneIcon from "@material-ui/icons/Phone";
-import FormControl from "@material-ui/core/FormControl";
 import { useHistory } from "react-router";
 import Divider from "@material-ui/core/Divider";
 
@@ -122,16 +121,12 @@ const VisitDetails = ({ chosenVisit }) => {
     <Grid item sm={12} md={6}>
       <Grid item className={classes.root} container>
         <DoctorCard name={name} position={position} description={description} />
-        <Card item p={8} md={6} className={classes.visit}>
-          <Typography>
-            <Box fontWeight={700} fontSize={20}>
-              Termin konsultacji: {getFormattedVisitDate(date)}
-            </Box>
-          </Typography>
+        <Card p={8} md={6} className={classes.visit}>
+          <Box fontWeight={700} fontSize={20}>
+            Termin konsultacji: {getFormattedVisitDate(date)}
+          </Box>
           <form onSubmit={submitVisit}>
             <Box className={classes.buttons}>
-              {/*TODO */}
-              {/*TODO dodać button group*/}
               <Button
                 variant="outlined"
                 color="secondary"
@@ -175,18 +170,16 @@ const VisitDetails = ({ chosenVisit }) => {
                 value={payment}
                 onChange={(e) => onChangeValuePayment(e)}
               >
-                  <Box className={classes.payment}>
-                    <FormControlLabel
-                      value="subscription"
-                      control={<Radio color="secondary" />}
-                      label="W abonamencie"
-                    />
-                    <Typography>
-                      <Box fontWeight={700} fontSize={24}>
-                        32,99 zł
-                      </Box>
-                    </Typography>
+                <Box className={classes.payment}>
+                  <FormControlLabel
+                    value="subscription"
+                    control={<Radio color="secondary" />}
+                    label="W abonamencie"
+                  />
+                  <Box fontWeight={700} fontSize={24}>
+                    32,99 zł
                   </Box>
+                </Box>
                 <Divider />
                 <Box className={classes.payment}>
                   <FormControlLabel
@@ -194,11 +187,9 @@ const VisitDetails = ({ chosenVisit }) => {
                     control={<Radio color="secondary" />}
                     label="Płatność jednorazowa"
                   />
-                  <Typography>
-                    <Box fontWeight={700} fontSize={24}>
-                      69,00 zł
-                    </Box>
-                  </Typography>
+                  <Box fontWeight={700} fontSize={24}>
+                    69,00 zł
+                  </Box>
                 </Box>
               </RadioGroup>
             </Box>

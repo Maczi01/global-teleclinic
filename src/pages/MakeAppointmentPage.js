@@ -10,7 +10,7 @@ import VisitDetails from "../components/VisitDetails";
 import MainTemplate from "../templates/MainTemplate";
 import ListVisits from "../components/ListVisits";
 
-const MakeAppointmentView = () => {
+const MakeAppointmentPage = () => {
   const [chosenVisit, setChosenVisit] = useState();
 
   const handleVisit = (d) => {
@@ -31,4 +31,4 @@ const MakeAppointmentView = () => {
   );
 };
 
-export default MakeAppointmentView;
+export default MakeAppointmentPage;

@@ -38,7 +38,7 @@ const ListVisits = ({ handleVisit }) => {
   };
 
   return (
-    <Grid container item md={6}>
+    <Grid container item md={6} >
       {isError ? (
         <Box
           display="flex"
