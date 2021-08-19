@@ -1,12 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import React from "react";
 import theme from "../theme/theme";
-import { ThemeProvider } from "@material-ui/core/styles";
-import VisitCard from "../components/VisitCard";
+import {ThemeProvider} from "@material-ui/core/styles";
 import "@testing-library/jest-dom";
-import user from "@testing-library/user-event";
 import ConfirmPage from "../pages/ConfirmPage";
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 describe("<ConfirmPage />", () => {
   it("correctly render ConfirmPage", () => {
@@ -17,7 +15,7 @@ describe("<ConfirmPage />", () => {
         </BrowserRouter>
       </ThemeProvider>
     );
-    //
+
     expect(
       screen.getByText(/Konsultacja została umówiona/i)
     ).toBeInTheDocument();

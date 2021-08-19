@@ -1,7 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import VisitCard from "./VisitCard";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Box from "@material-ui/core/Box";
 import ProgressCircle from "./ProgressCircle";
 import Button from "@material-ui/core/Button";

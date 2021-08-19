@@ -4,7 +4,6 @@ import theme from "../theme/theme";
 import { ThemeProvider } from "@material-ui/core/styles";
 import VisitCard from "../components/VisitCard";
 import "@testing-library/jest-dom";
-import user from "@testing-library/user-event";
 
 describe("<VisitCard />", () => {
   it("correctly render item on ListVisits", () => {

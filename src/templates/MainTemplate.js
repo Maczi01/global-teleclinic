@@ -2,7 +2,6 @@ import Navbar from "../components/Navbar";
 import React from "react";
 import Footer from "../components/Footer";
 import Box from "@material-ui/core/Box";
-import Card from "@material-ui/core/Card/Card";
 
 const MainTemplate = ({ children }) => (
   <Box bgcolor="#eeeeee">

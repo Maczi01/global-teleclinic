@@ -1,20 +1,19 @@
 import Grid from "@material-ui/core/Grid";
-import Information from "./Information";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import DoctorCard from "./DoctorCard";
 import Card from "@material-ui/core/Card/Card";
 import Typography from "@material-ui/core/Typography";
-import { getFormattedVisitDate } from "../utils/utils";
+import {getFormattedVisitDate} from "../utils/utils";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import RadioGroup from "@material-ui/core/RadioGroup/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
 import Radio from "@material-ui/core/Radio/Radio";
-import { makeStyles } from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/Chat";
 import VoiceChatIcon from "@material-ui/icons/VoiceChat";
 import PhoneIcon from "@material-ui/icons/Phone";
-import { useHistory } from "react-router";
+import {useHistory} from "react-router";
 import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(() => ({

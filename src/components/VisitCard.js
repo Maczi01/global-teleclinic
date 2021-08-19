@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
     height: "70px",
     backgroundColor: (active) => (active ? "#f50057" : "#eeeeee"),
     display: "flex",
-    // flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
@@ -63,9 +62,7 @@ const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
       elevation={0}
     >
       <CardContent>
-        {/*TODO nazwa classes box czy classes paper?*/}
         <Box className={classes.active}>
-          {/*TODO sprawdzić zaokrąglenia*/}
           <Box align="center">
             <Box variant="h6" color={active ? "#ffffff" : "#000000"}>
               {getDayAndMonth(date)}
