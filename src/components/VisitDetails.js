@@ -66,17 +66,24 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const VisitDetails = ({ choosenVisit }) => {
+const VisitDetails = ({ chosenVisit }) => {
   const [contact, setContact] = useState("chat");
   const [payment, setPayment] = useState("subscription");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isError, setIsError] = useState(false);
-
+  // const [visit, setVisit] = useState({
+  //   date,
+  //   position,
+  //   name,
+  //   description,
+  //   payment:"subscription",
+  //   contact:"chat"
+  // })
   const BASE_URL =
     "https://global-teleclinic-default-rtdb.europe-west1.firebasedatabase.app/.json";
   const classes = useStyles();
   const history = useHistory();
-  const { date, name, position, description } = choosenVisit;
+  const { date, name, position, description } = chosenVisit;
 
   const submitVisit = (e) => {
     e.preventDefault();
@@ -95,7 +102,6 @@ const VisitDetails = ({ choosenVisit }) => {
           console.log("Cannot send data");
           setIsError(true);
         } else {
-          setIsSubmitting(false);
           history.push("/confirmed");
         }
         setIsSubmitting(false);
@@ -113,7 +119,7 @@ const VisitDetails = ({ choosenVisit }) => {
   };
 
   return (
-    <Grid item xs={12} sm={12} md={6}>
+    <Grid item sm={12} md={6}>
       <Grid item className={classes.root} container>
         <DoctorCard name={name} position={position} description={description} />
         <Card item p={8} md={6} className={classes.visit}>

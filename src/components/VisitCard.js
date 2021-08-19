@@ -1,13 +1,11 @@
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
 import {getDayAndMonth, getHourAndMinute} from "../utils/utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     height: "70px",
     backgroundColor: (active) => (active ? "#f50057" : "#eeeeee"),
     display: "flex",
-    flexDirection: "column",
+    // flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
@@ -63,14 +61,12 @@ const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
       className={classes.root}
       elevation={2}
       display={{ xs: "none", sm: "none", md: "none", lg: "none" }}
-      data-testid="card"
-
     >
       <CardContent>
         {/*TODO nazwa classes box czy classes paper?*/}
         <Box className={classes.active}>
           {/*TODO sprawdzić zaokrąglenia*/}
-          <Typography align="center">
+          <Box align="center">
             <Box variant="h6" color={active ? "#ffffff" : "#000000"}>
               {getDayAndMonth(date)}
             </Box>
@@ -78,22 +74,20 @@ const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
               fontSize={24}
               fontWeight={700}
               color={active ? "#ffffff" : "#f50057"}
-              variant="h5"
             >
               {getHourAndMinute(date)}
             </Box>
-          </Typography>
+          </Box>
         </Box>
       </CardContent>
       <Box display={{ xs: "none", sm: "none", md: "block" }}>
         <Avatar className={classes.avatar}>H</Avatar>
       </Box>
-      <Typography className={classes.content}>
+      <Box className={classes.content}>
         <Box fontWeight={700}>lek. {name}</Box>
         <Box fontWeight={500}>{position}</Box>
-      </Typography>
+      </Box>
       <Box display={{ xs: "none", sm: "none", md: "block" }}>
-
         <ArrowForwardIosIcon style={{ color: "#f50057", display: active ? "block" : "none" }} />
       </Box>
     </Card>

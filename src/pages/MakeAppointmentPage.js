@@ -6,28 +6,28 @@ import Information from "../components/Information";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import VisitCard from "../components/VisitCard";
-import VisitDetails from "../components/RightSide";
-import PageTemplate from "../templates/PageTemplate";
+import VisitDetails from "../components/VisitDetails";
+import MainTemplate from "../templates/MainTemplate";
 import ListVisits from "../components/ListVisits";
 
 const MakeAppointmentView = () => {
-  const [choosenVisit, setChoosenVisit] = useState();
+  const [chosenVisit, setChosenVisit] = useState();
 
   const handleVisit = (d) => {
-      setChoosenVisit(d);
+      setChosenVisit(d);
   };
 
   return (
-    <PageTemplate>
+    <MainTemplate>
       <Grid container component="main" >
         <ListVisits handleVisit={handleVisit} />
-        {choosenVisit ? (
-          <VisitDetails choosenVisit={choosenVisit} />
+        {chosenVisit ? (
+          <VisitDetails chosenVisit={chosenVisit} />
         ) : (
           <Information />
         )}
       </Grid>
-    </PageTemplate>
+    </MainTemplate>
   );
 };
 

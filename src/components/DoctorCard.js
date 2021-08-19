@@ -51,6 +51,7 @@ const DoctorCard = ({ description, name, position }) => {
           <Box fontSize={16}>{position}</Box>
         </Typography>
         <Typography variant="body2"  >
+          {/*TODO przycinanie tekstu na mobilce*/}
           {cutDescription(description)}
           <Link
               href="#"
