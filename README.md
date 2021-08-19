@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[Demo](https://611d87be70fe6a1bc29ca914--global-teleclinic.netlify.app/)
+[Demo](https://611eedd58572668c917bac39--global-teleclinic.netlify.app/)
 
 
 ![screenshot](https://github.com/Maczi01/global-teleclinic/blob/master/public/appgif.gif)<br/>
