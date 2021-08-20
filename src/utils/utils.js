@@ -6,7 +6,10 @@ export const getFormattedVisitDate = (date) => {
   const month = objDate.toLocaleString(locale, { month: "long" });
   const year = objDate.getFullYear();
   const hour = objDate.getHours();
-  const minute = objDate.getMinutes();
+  const minute =
+    objDate.getMinutes() < 10
+      ? "0" + objDate.getMinutes()
+      : "" + objDate.getMinutes();
   const daysDifference = day - today;
   const diff = textWithDate(daysDifference);
   return `${diff} ${day} ${month} ${year}, godz. ${hour}:${minute} `;
