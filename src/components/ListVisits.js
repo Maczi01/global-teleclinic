@@ -1,12 +1,13 @@
-import Grid from "@material-ui/core/Grid";
-import VisitCard from "./VisitCard";
 import React, {useEffect, useState} from "react";
+import PropTypes from 'prop-types';
+import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import ProgressCircle from "./ProgressCircle";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import PropTypes from 'prop-types';
+import VisitCard from "./VisitCard";
+import ProgressCircle from "./ProgressCircle";
 import {useAsyncFn} from 'react-use';
+import axios from "axios";
 
 
 const ListVisits = ({handleVisit}) => {
@@ -25,22 +26,39 @@ const ListVisits = ({handleVisit}) => {
     // };
 
 
-    const fetchData = async () => {
-      setIsLoading(true);
-      setIsError(false);
-      try {
-        const response = await fetch("data/data.json");
-        const data = await response.json();
-        setAvailableVisits(data);
-      } catch (error) {
-        setIsError(true);
-        console.log(error);
-      }
-      setIsLoading(false);
-    };
+    const fetchData = () => {
+        setIsLoading(true);
+        setIsError(false);
+        axios
+            .get(url)
+            .then(response => {
+                setAvailableVisits(response.data)
+            })
+            .catch(error => {
+                console.log(error);
+                setIsError(true);
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+    }
+
+    // const fetchData = async () => {
+    //   setIsLoading(true);
+    //   setIsError(false);
+    //   try {
+    //     const response = await fetch("data/data.json");
+    //     const data = await response.json();
+    //     setAvailableVisits(data);
+    //   } catch (error) {
+    //     setIsError(true);
+    //     console.log(error);
+    //   }
+    //   setIsLoading(false);
+    // };
 
     useEffect(() => {
-      fetchData();
+        fetchData();
     }, []);
 
     const [currentIndex, setCurrentIndex] = useState();
@@ -52,59 +70,59 @@ const ListVisits = ({handleVisit}) => {
 
     return (
         <Grid container item md={6}>
-          {/*  {state.loading ?*/}
-          {/*      <ProgressCircle/>*/}
-          {/*      : state.error*/}
-          {/*          ? <Box*/}
-          {/*              display="flex"*/}
-          {/*              alignItems="center"*/}
-          {/*              justifyContent="center"*/}
-          {/*              margin="0 auto"*/}
-          {/*              flexDirection="column"*/}
-          {/*          >*/}
-          {/*              <Typography> {state.error.message}</Typography>*/}
-          {/*          </Box> :*/}
-          {/*          availableVisits.map((visit) => (*/}
-          {/*              <VisitCard*/}
-          {/*                  key={visit.id}*/}
-          {/*                  visit={visit}*/}
-          {/*                  active={visit.id === currentIndex}*/}
-          {/*                  chooseCurrentVisit={() => chooseCurrentVisit(visit)}*/}
-          {/*              />*/}
-          {/*          ))*/}
-          {/*  }*/}
-          {/*<button onClick={() => doFetch()}>Start loading</button>*/}
+            {/*  {state.loading ?*/}
+            {/*      <ProgressCircle/>*/}
+            {/*      : state.error*/}
+            {/*          ? <Box*/}
+            {/*              display="flex"*/}
+            {/*              alignItems="center"*/}
+            {/*              justifyContent="center"*/}
+            {/*              margin="0 auto"*/}
+            {/*              flexDirection="column"*/}
+            {/*          >*/}
+            {/*              <Typography> {state.error.message}</Typography>*/}
+            {/*          </Box> :*/}
+            {/*          availableVisits.map((visit) => (*/}
+            {/*              <VisitCard*/}
+            {/*                  key={visit.id}*/}
+            {/*                  visit={visit}*/}
+            {/*                  active={visit.id === currentIndex}*/}
+            {/*                  chooseCurrentVisit={() => chooseCurrentVisit(visit)}*/}
+            {/*              />*/}
+            {/*          ))*/}
+            {/*  }*/}
+            {/*<button onClick={() => doFetch()}>Start loading</button>*/}
 
 
             {isError ? (
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                margin="0 auto"
-                flexDirection="column"
-              >
-                <Typography> Problem z ładowaniem danych</Typography>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  disableElevation
-                  onClick={fetchData}
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    margin="0 auto"
+                    flexDirection="column"
                 >
-                  Spróbuj ponownie
-                </Button>
-              </Box>
+                    <Typography> Problem z ładowaniem danych</Typography>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        disableElevation
+                        onClick={fetchData}
+                    >
+                        Spróbuj ponownie
+                    </Button>
+                </Box>
             ) : isLoading ? (
-              <ProgressCircle />
+                <ProgressCircle/>
             ) : (
-              availableVisits.map((visit) => (
-                <VisitCard
-                  key={visit.id}
-                  visit={visit}
-                  active={visit.id === currentIndex}
-                  chooseCurrentVisit={() => chooseCurrentVisit(visit)}
-                />
-              ))
+                availableVisits.map((visit) => (
+                    <VisitCard
+                        key={visit.id}
+                        visit={visit}
+                        active={visit.id === currentIndex}
+                        chooseCurrentVisit={() => chooseCurrentVisit(visit)}
+                    />
+                ))
             )}
         </Grid>
     );

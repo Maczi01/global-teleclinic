@@ -1,10 +1,10 @@
-import Navbar from "../components/Navbar";
 import React from "react";
-import Footer from "../components/Footer";
 import Box from "@material-ui/core/Box";
-import confirmImage from "../assets/confirmImage.svg";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import confirmImage from "../assets/confirmImage.svg";
 
 const useStyles = makeStyles({
   root: {

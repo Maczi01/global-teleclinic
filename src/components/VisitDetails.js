@@ -1,21 +1,25 @@
-import Grid from "@material-ui/core/Grid";
 import React, {useState} from "react";
-import DoctorCard from "./DoctorCard";
-import Card from "@material-ui/core/Card/Card";
+import PropTypes from "prop-types";
+import {useHistory} from "react-router";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import {getFormattedVisitDate} from "../utils/utils";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import ChatIcon from "@material-ui/icons/Chat";
+import VoiceChatIcon from "@material-ui/icons/VoiceChat";
+import PhoneIcon from "@material-ui/icons/Phone";
+import Divider from "@material-ui/core/Divider";
+import Card from "@material-ui/core/Card/Card";
 import RadioGroup from "@material-ui/core/RadioGroup/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
 import Radio from "@material-ui/core/Radio/Radio";
 import {makeStyles} from "@material-ui/core";
-import ChatIcon from "@material-ui/icons/Chat";
-import VoiceChatIcon from "@material-ui/icons/VoiceChat";
-import PhoneIcon from "@material-ui/icons/Phone";
-import {useHistory} from "react-router";
-import Divider from "@material-ui/core/Divider";
-import PropTypes from "prop-types";
+import axios from "axios";
+import {getFormattedVisitDate} from "../utils/utils";
+import DoctorCard from "./DoctorCard";
+import ContactButton from "./ContactButton";
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import ToggleButton from '@material-ui/lab/ToggleButton';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -73,31 +77,38 @@ const VisitDetails = ({chosenVisit}) => {
     const {date, name, position, description} = chosenVisit;
     const BASE_URL =
         "https://global-teleclinic-default-rtdb.europe-west1.firebasedatabase.app/.json";
+    const SUBMITTING_TIME = 2000;
     const classes = useStyles();
     const history = useHistory();
-    console.log(chosenVisit);
+
+    const handleContact = (e, chosenContact) => {
+        setContact(chosenContact)
+    }
+
     const submitVisit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
         setIsError(false);
 
-        const requestOptions = {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({doctorName: name, payment, contact, date}),
-        };
-
         setTimeout(() => {
-            fetch(BASE_URL, requestOptions).then((response) => {
-                if (!response.ok) {
-                    console.log("Cannot send data");
-                    setIsError(true);
-                } else {
-                    history.push("/confirmed");
-                }
-                setIsSubmitting(false);
-            });
-        }, 2000);
+            axios
+                .post(BASE_URL, ({name, payment, contact, date}))
+                .then(response => {
+                    if (!response.ok) {
+                        console.log("Cannot send data");
+                        setIsError(true);
+                    } else {
+                        history.push("/confirmed");
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                    setIsError(true)
+                })
+                .finally(() =>
+                    setIsSubmitting(false)
+                )
+        }, SUBMITTING_TIME);
     };
 
     const onChangeValuePayment = (e) => {
@@ -119,43 +130,71 @@ const VisitDetails = ({chosenVisit}) => {
                         </Box>
                     </Typography>
                     <form onSubmit={submitVisit}>
-                        <Box className={classes.buttons}>
-                            <Button
-                                variant="outlined"
-                                color="secondary"
-                                value="chat"
-                                disableElevation
-                                startIcon={<ChatIcon/>}
-                                onClick={(e) => onChangeValueContact(e)}
-                                className={contact === "chat" ? "" : classes.disabledButton}
-                            >
-                                Przez czat
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                color="secondary"
-                                value="videochat"
-                                disableElevation
-                                className={
-                                    contact === "videochat" ? "" : classes.disabledButton
-                                }
-                                onClick={(e) => onChangeValueContact(e)}
-                                startIcon={<VoiceChatIcon/>}
-                            >
-                                Przez wideo-czat
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                color="secondary"
-                                disableElevation
-                                value="phone"
-                                startIcon={<PhoneIcon/>}
-                                onClick={(e) => onChangeValueContact(e)}
-                                className={contact === "phone" ? "" : classes.disabledButton}
-                            >
-                                Przez telefon
-                            </Button>
-                        </Box>
+
+                        <ToggleButtonGroup
+                            value={contact}
+                            exclusive
+                            onChange={handleContact}
+
+                        >
+                            <ToggleButton>
+                                <ChatIcon/>
+                            </ToggleButton>
+                            <ToggleButton>
+                                <VoiceChatIcon/>
+                            </ToggleButton>
+                            <ToggleButton>
+                                <PhoneIcon/>
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+
+
+                        {/*<Box className={classes.buttons}>*/}
+                        {/*    <Button*/}
+                        {/*        variant="outlined"*/}
+                        {/*        color="secondary"*/}
+                        {/*        value="chat"*/}
+                        {/*        disableElevation*/}
+                        {/*        startIcon={<ChatIcon/>}*/}
+                        {/*        onClick={(e) => onChangeValueContact(e)}*/}
+                        {/*        className={contact === "chat" ? "" : classes.disabledButton}*/}
+                        {/*    >*/}
+                        {/*        Przez czat*/}
+                        {/*    </Button>*/}
+
+                        {/*    <ContactButton*/}
+                        {/*        active={contact === "chat"}*/}
+                        {/*        value="chat"*/}
+                        {/*        icon={<ChatIcon/>}*/}
+                        {/*    >*/}
+
+                        {/*    </ContactButton>*/}
+
+                        {/*    <Button*/}
+                        {/*        variant="outlined"*/}
+                        {/*        color="secondary"*/}
+                        {/*        value="videochat"*/}
+                        {/*        disableElevation*/}
+                        {/*        className={*/}
+                        {/*            contact === "videochat" ? "" : classes.disabledButton*/}
+                        {/*        }*/}
+                        {/*        onClick={(e) => onChangeValueContact(e)}*/}
+                        {/*        startIcon={<VoiceChatIcon/>}*/}
+                        {/*    >*/}
+                        {/*        Przez wideo-czat*/}
+                        {/*    </Button>*/}
+                        {/*    <Button*/}
+                        {/*        variant="outlined"*/}
+                        {/*        color="secondary"*/}
+                        {/*        disableElevation*/}
+                        {/*        value="phone"*/}
+                        {/*        startIcon={<PhoneIcon/>}*/}
+                        {/*        onClick={(e) => onChangeValueContact(e)}*/}
+                        {/*        className={contact === "phone" ? "" : classes.disabledButton}*/}
+                        {/*    >*/}
+                        {/*        Przez telefon*/}
+                        {/*    </Button>*/}
+                        {/*</Box>*/}
                         <Divider/>
                         <Box>
                             <RadioGroup

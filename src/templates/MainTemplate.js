@@ -1,7 +1,8 @@
-import Navbar from "../components/Navbar";
 import React from "react";
-import Footer from "../components/Footer";
+import PropTypes from 'prop-types';
 import Box from "@material-ui/core/Box";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const MainTemplate = ({ children }) => (
   <Box bgcolor="#eeeeee">
@@ -12,5 +13,9 @@ const MainTemplate = ({ children }) => (
     </Box>
   </Box>
 );
+
+MainTemplate.propTypes = {
+    children: PropTypes.element
+}
 
 export default MainTemplate;

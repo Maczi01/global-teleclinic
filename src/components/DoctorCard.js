@@ -1,12 +1,12 @@
-import Typography from "@material-ui/core/Typography";
 import React from "react";
+import PropTypes from 'prop-types';
+import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
-import Card from "@material-ui/core/Card/Card";
 import Link from "@material-ui/core/Link";
+import Card from "@material-ui/core/Card/Card";
 import { makeStyles } from "@material-ui/core";
 import { cutDescription } from "../utils/utils";
-import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
