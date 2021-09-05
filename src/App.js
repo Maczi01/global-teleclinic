@@ -6,7 +6,6 @@ import ConfirmPage from "./pages/ConfirmPage";
 import {ThemeProvider} from "@material-ui/core/styles";
 import theme from "./theme/theme";
 
-
 function App() {
   return (
     <ThemeProvider theme={theme}>

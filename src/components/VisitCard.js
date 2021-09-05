@@ -7,6 +7,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import Typography from "@material-ui/core/Typography";
 import { getDayAndMonth, getHourAndMinute } from "../utils/utils";
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
+  console.log(visit)
   const { name, position, date } = visit;
   const classes = useStyles(active);
   return (
@@ -92,5 +94,16 @@ const VisitCard = ({ visit, chooseCurrentVisit, active }) => {
     </Card>
   );
 };
+
+VisitCard.propTypes = {
+  visit: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name:PropTypes.string.isRequired,
+    description: PropTypes.string,
+    date: PropTypes.string
+  }),
+  chooseCurrentVisit: PropTypes.func,
+  active: PropTypes.bool
+}
 
 export default VisitCard;

@@ -112,8 +112,11 @@ const ListVisits = ({handleVisit}) => {
 
 ListVisits.propTypes = {
     handleVisit: PropTypes.func.isRequired
-}
+};
 
+ListVisits.defaultProps = {
+    handleVisit: []
+};
 
 export default ListVisits;
 

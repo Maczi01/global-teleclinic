@@ -6,6 +6,7 @@ import Card from "@material-ui/core/Card/Card";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core";
 import { cutDescription } from "../utils/utils";
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +65,12 @@ const DoctorCard = ({ description, name, position }) => {
       </Box>
     </Card>
   );
+};
+
+DoctorCard.propTypes = {
+  description: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
 };
 
 export default DoctorCard;
