@@ -66,6 +66,7 @@ const VisitCard = ({visit, chooseCurrentVisit, active}) => {
                 <Box className={classes.active}>
                     <Box align="center">
                         <Box variant="h6" color={active ? "#ffffff" : "#000000"}>
+
                             {getDayAndMonth(date)}
                         </Box>
                         <Box
