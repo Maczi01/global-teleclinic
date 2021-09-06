@@ -67,7 +67,13 @@ const useStyles = makeStyles(() => ({
         alignItems: "center",
         margin: "10px 0",
     },
-}));
+    toggleButton: {
+        color: "blue",
+        border: "1px solid blue",
+    },
+
+}))
+;
 
 const VisitDetails = ({chosenVisit}) => {
     const [contact, setContact] = useState("chat");
@@ -135,32 +141,37 @@ const VisitDetails = ({chosenVisit}) => {
                             value={contact}
                             exclusive
                             onChange={handleContact}
-
                         >
-                            <ToggleButton>
+                            <ToggleButton value="chat"
+                                          variant="outlined"
+                                          color="secondary"
+                                          className={classes.toggleButton}
+                                          selected={"chat" === contact}
+                            >
                                 <ChatIcon/>
+                                Przez chat
                             </ToggleButton>
-                            <ToggleButton>
+                            <ToggleButton value="phone">
                                 <VoiceChatIcon/>
                             </ToggleButton>
-                            <ToggleButton>
+                            <ToggleButton value="videochat">
                                 <PhoneIcon/>
                             </ToggleButton>
                         </ToggleButtonGroup>
 
 
                         {/*<Box className={classes.buttons}>*/}
-                        {/*    <Button*/}
-                        {/*        variant="outlined"*/}
-                        {/*        color="secondary"*/}
-                        {/*        value="chat"*/}
-                        {/*        disableElevation*/}
-                        {/*        startIcon={<ChatIcon/>}*/}
-                        {/*        onClick={(e) => onChangeValueContact(e)}*/}
-                        {/*        className={contact === "chat" ? "" : classes.disabledButton}*/}
-                        {/*    >*/}
-                        {/*        Przez czat*/}
-                        {/*    </Button>*/}
+                        <Button
+                            variant="outlined"
+                            color="secondary"
+                            value="chat"
+                            disableElevation
+                            startIcon={<ChatIcon/>}
+                            onClick={(e) => onChangeValueContact(e)}
+                            className={contact === "chat" ? "" : classes.disabledButton}
+                        >
+                            Przez czat
+                        </Button>
 
                         {/*    <ContactButton*/}
                         {/*        active={contact === "chat"}*/}
