@@ -5,7 +5,7 @@ import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 export const getFormattedVisitDate = (date) => {
   const daysDifference = differenceInCalendarDays(new Date(date), new Date());
   const diff = textWithDate(daysDifference);
-  return `${diff}${format(new Date(date), 'dd MMMM y,', { locale: pl })} 
+  return ` ${diff}${format(new Date(date), 'dd MMMM y,', { locale: pl })} 
     godz. ${format(new Date(date), 'H:mm')}`;
 };
 

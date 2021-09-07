@@ -89,6 +89,8 @@ const VisitDetails = ({chosenVisit}) => {
     const history = useHistory();
 
     const handleContact = (e, chosenContact) => {
+        console.log(e.target.value)
+        console.log(e.currentTarget.value)
         setContact(chosenContact);
     };
 
@@ -103,8 +105,8 @@ const VisitDetails = ({chosenVisit}) => {
                     name, payment, contact, date,
                 }))
                 .then((response) => {
-                    if (!response.ok) {
-                        console.log('Cannot send data');
+                    if (response.status !== 200) {
+                        console.log(response);
                         setIsError(true);
                     } else {
                         history.push('/confirmed');
@@ -152,7 +154,7 @@ const VisitDetails = ({chosenVisit}) => {
                                 icon={<ChatIcon/>}
                                 active={contact === 'chat'}
                                 buttonText="Przez chat"
-                                // onChangeValueContact={onChangeValueContact}
+                                onChangeValueContact={onChangeValueContact}
                             />
 
                             <ContactButton
@@ -160,7 +162,7 @@ const VisitDetails = ({chosenVisit}) => {
                                 icon={<PhoneIcon/>}
                                 active={contact === 'phone'}
                                 buttonText="Przez telefon"
-                                // onChangeValueContact={onChangeValueContact}
+                                onChangeValueContact={onChangeValueContact}
                             />
 
                             <ContactButton
@@ -168,7 +170,7 @@ const VisitDetails = ({chosenVisit}) => {
                                 icon={<ChatIcon/>}
                                 active={contact === 'videochat'}
                                 buttonText="Przez wideo-chat"
-                                // onChangeValueContact={onChangeValueContact}
+                                onChangeValueContact={onChangeValueContact}
                             />
                         </ToggleButtonGroup>
                         <Divider/>
@@ -212,11 +214,9 @@ const VisitDetails = ({chosenVisit}) => {
                             Umów konsultację
                         </Button>
                         {isError && (
-                            <Typography>
                                 <Box mt={2} color="error.main">
                                     Nie udało się wysłać. Spróbuj ponownie
                                 </Box>
-                            </Typography>
                         )}
                     </form>
                 </Card>
