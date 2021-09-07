@@ -1,21 +1,21 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import {makeStyles} from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import logo from "../assets/logo.svg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import logo from '../assets/logo.svg';
 
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
-    position: "fixed",
-    left: "0",
-    top: "0",
-    width: "100%",
+    position: 'fixed',
+    left: '0',
+    top: '0',
+    width: '100%',
   },
   bar: {
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
   },
   title: {
     flexGrow: 1,
@@ -29,7 +29,7 @@ const Navbar = () => {
     <div className={classes.root}>
       <AppBar className={classes.bar} position="static" elevation={0}>
         <Toolbar>
-          <Link to={"/"}>
+          <Link to="/">
             <IconButton
               edge="start"
               className={classes.menuButton}

@@ -1,26 +1,26 @@
-import {render, screen} from "@testing-library/react";
-import React from "react";
-import theme from "../theme/theme";
-import {ThemeProvider} from "@material-ui/core/styles";
-import "@testing-library/jest-dom";
-import ConfirmPage from "../pages/ConfirmPage";
-import {BrowserRouter} from "react-router-dom";
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from '../theme/theme';
+import '@testing-library/jest-dom';
+import ConfirmPage from '../pages/ConfirmPage';
+import { BrowserRouter } from 'react-router-dom';
 
-describe("<ConfirmPage />", () => {
-  it("correctly render ConfirmPage", () => {
+describe('<ConfirmPage />', () => {
+  it('correctly render ConfirmPage', () => {
     render(
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <ConfirmPage />
         </BrowserRouter>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     expect(
-      screen.getByText(/Konsultacja została umówiona/i)
+      screen.getByText(/Konsultacja została umówiona/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Dziękujemy za skorzystanie z usługi/i)
+      screen.getByText(/Dziękujemy za skorzystanie z usługi/i),
     ).toBeInTheDocument();
   });
 });

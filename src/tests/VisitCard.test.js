@@ -1,25 +1,25 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
-import theme from "../theme/theme";
-import { ThemeProvider } from "@material-ui/core/styles";
-import VisitCard from "../components/VisitCard";
-import "@testing-library/jest-dom";
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from '../theme/theme';
+import VisitCard from '../components/VisitCard';
+import '@testing-library/jest-dom';
 
-describe("<VisitCard />", () => {
-  it("correctly render item on ListVisits", () => {
+describe('<VisitCard />', () => {
+  it('correctly render item on ListVisits', () => {
     const visit = {
       id: 1,
-      name: "Doctor Who",
-      position: "surgeon",
+      name: 'Doctor Who',
+      position: 'surgeon',
       description:
-        "British science fiction television programme broadcast by BBC One since 1963.",
-      date: "2021-08-14T18:05:43.511Z",
+        'British science fiction television programme broadcast by BBC One since 1963.',
+      date: '2021-08-14T18:05:43.511Z',
     };
 
     render(
       <ThemeProvider theme={theme}>
         <VisitCard visit={visit} />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     expect(screen.getByText(/Doctor Who/i)).toBeInTheDocument();

@@ -1,8 +1,8 @@
-import { createTheme } from "@material-ui/core";
+import { createTheme } from '@material-ui/core';
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Ubuntu, Roboto'
+    fontFamily: 'Ubuntu, Roboto',
   },
 
 });

@@ -1,10 +1,10 @@
-import React from "react";
-import MakeAppointmentPage from "./pages/MakeAppointmentPage";
-import {BrowserRouter, Route} from "react-router-dom";
-import {Switch} from "react-router";
-import ConfirmPage from "./pages/ConfirmPage";
-import {ThemeProvider} from "@material-ui/core/styles";
-import theme from "./theme/theme";
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch } from 'react-router';
+import { ThemeProvider } from '@material-ui/core/styles';
+import ConfirmPage from './pages/ConfirmPage';
+import MakeAppointmentPage from './pages/MakeAppointmentPage';
+import theme from './theme/theme';
 
 function App() {
   return (
