@@ -125,7 +125,6 @@ const VisitDetails = ({chosenVisit}) => {
     };
 
     const onChangeValueContact = (e) => {
-        console.log(e.currentTarget.value);
         setContact(e.currentTarget.value);
     };
 
@@ -146,6 +145,8 @@ const VisitDetails = ({chosenVisit}) => {
                             value={contact}
                             exclusive
                             onChange={handleContact}
+                            // onChange={(e) => onChangeValueContact(e)}
+
                             className={classes.buttons}
                         >
 
