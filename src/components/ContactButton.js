@@ -1,6 +1,3 @@
-import Button from '@material-ui/core/Button';
-import ChatIcon from '@material-ui/core/SvgIcon/SvgIcon';
-import Box from '@material-ui/core/Box';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import React from 'react';
 import {makeStyles} from '@material-ui/core';

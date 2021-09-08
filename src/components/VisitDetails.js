@@ -215,9 +215,9 @@ const VisitDetails = ({chosenVisit}) => {
                             Umów konsultację
                         </Button>
                         {isError && (
-                                <Box mt={2} color="error.main">
-                                    Nie udało się wysłać. Spróbuj ponownie
-                                </Box>
+                            <Box mt={2} color="error.main">
+                                Nie udało się wysłać. Spróbuj ponownie
+                            </Box>
                         )}
                     </form>
                 </Card>
