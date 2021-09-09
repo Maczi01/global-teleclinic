@@ -94,13 +94,13 @@ const VisitDetails = ({chosenVisit}) => {
         setContact(chosenContact);
     };
 
-    const submitVisit = (e) => {
+    const submitVisit =  (e) => {
         e.preventDefault();
         setIsSubmitting(true);
         setIsError(false);
 
         setTimeout(() => {
-            axios
+             axios
                 .post(BASE_URL, ({
                     name, payment, contact, date,
                 }))

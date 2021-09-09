@@ -9,8 +9,8 @@ import ListVisits from '../components/ListVisits';
 const MakeAppointmentPage = () => {
   const [chosenVisit, setChosenVisit] = useState();
 
-  const handleVisit = (d) => {
-    setChosenVisit(d);
+  const handleVisit = (visit) => {
+    setChosenVisit(visit);
   };
 
   return (
